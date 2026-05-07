@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Umeed Foundation Layyah</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--g:#1a6b3c;--gl:#2d8a52;--r:#c0392b;--cream:#f8f6f0;--dark:#0d1a10;--mid:#4a5c4e;--gold:#c9963a;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:1000;background:rgba(248,246,240,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,107,60,.1);box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.ni{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.logo-circle{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(26,107,60,.2);flex-shrink:0;}
+.logo-circle img{width:100%;height:100%;object-fit:cover;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--g);}
+.logo-text b{color:var(--r);}
+.nl{display:flex;gap:2px;}
+.nl a{color:var(--mid);font-size:.82rem;font-weight:500;padding:7px 12px;border-radius:7px;cursor:pointer;transition:all .2s;}
+.nl a:hover,.nl a.on{background:var(--g);color:#fff;}
+.db{background:var(--r);color:#fff;border:none;padding:10px 22px;border-radius:24px;font:.85rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;}
+.db:hover{background:#a93226;transform:translateY(-1px);}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;}
+
+/* PAGES */
+.pg{display:none;padding-top:72px;min-height:100vh;}
+.pg.on{display:block;}
+
+/* HERO */
+.hero{position:relative;height:95vh;min-height:580px;overflow:hidden;display:flex;align-items:flex-end;}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,8,.95) 0%,rgba(5,18,8,.4) 55%,transparent 100%);}
+.hero-c{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 24px 64px;width:100%;}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(201,150,58,.4);color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px;background:rgba(201,150,58,.08);}
+.hero-c h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:18px;max-width:700px;}
+.hero-c h1 i{color:var(--gold);font-style:italic;}
+.hero-c p{color:rgba(255,255,255,.75);font-size:1rem;max-width:480px;line-height:1.8;margin-bottom:34px;font-weight:300;}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{padding:13px 32px;border-radius:30px;font:.88rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .25s;border:none;}
+.btn-g{background:var(--g);color:#fff;}
+.btn-g:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,60,.35);}
+.btn-w{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);}
+.btn-w:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+
+/* SLIDESHOW */
+.ss-sec{background:var(--dark);padding:64px 24px;}
+.ss-head{max-width:1240px;margin:0 auto 36px;}
+.ss-head .sec-tag{color:var(--gold);}
+.ss-head h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-top:6px;}
+.slideshow{position:relative;max-width:1240px;margin:0 auto;border-radius:20px;overflow:hidden;height:460px;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
+.slide.active{opacity:1;}
+.slide img{width:100%;height:100%;object-fit:cover;}
+.slide-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 60%);}
+.ss-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;pointer-events:none;z-index:2;}
+.arr{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;pointer-events:all;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.arr:hover{background:rgba(255,255,255,.3);}
+.ss-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;}
+.dot.active{background:var(--gold);width:24px;border-radius:4px;}
+
+/* ABOUT STRIP */
+.ab-strip{background:var(--dark);padding:80px 24px;}
+.ab-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.ab-in h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:20px;}
+.ab-in p{color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:14px;font-size:.95rem;font-weight:300;}
+.qb{border-left:3px solid var(--gold);padding-left:18px;color:rgba(255,255,255,.82)!important;font-style:italic;margin-top:22px!important;}
+.aimg{position:relative;}
+.aimg img{width:100%;border-radius:18px;object-fit:cover;height:450px;object-position:top;}
+.badge{position:absolute;bottom:-14px;left:-14px;background:var(--gold);color:var(--dark);padding:16px 20px;border-radius:14px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;text-align:center;line-height:1.2;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.badge small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;font-weight:400;margin-top:2px;opacity:.8;}
+
+/* STATS */
+.stats{background:var(--g);padding:64px 24px;}
+.sg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+.si h3{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#fff;line-height:1;margin-bottom:10px;}
+.si p{color:rgba(255,255,255,.65);font-size:.73rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
+
+/* STORIES */
+.stories{background:#fff;padding:80px 24px;}
+.st-in{max-width:1240px;margin:0 auto;}
+.sg3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+.sc{border-radius:18px;overflow:hidden;background:var(--cream);transition:transform .3s;}
+.sc:hover{transform:translateY(-7px);}
+.sc img{width:100%;height:220px;object-fit:cover;}
+.scb{padding:22px;}
+.scb h4{font-family:'Playfair Display',serif;font-size:1.02rem;margin-bottom:8px;}
+.scb p{color:var(--mid);font-size:.83rem;line-height:1.65;font-weight:300;}
+
+/* CTA */
+.cta{background:var(--g);padding:80px 24px;text-align:center;}
+.cta h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:14px;}
+.cta p{color:rgba(255,255,255,.7);max-width:440px;margin:0 auto 30px;font-size:.95rem;line-height:1.75;font-weight:300;}
+
+/* SECTION HELPERS */
+.sec-tag{display:inline-block;color:var(--g);font-weight:600;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:14px;}
+
+/* HOW IT WORKS */
+.hiw-hero{background:var(--dark);padding:120px 24px 72px;text-align:center;}
+.hiw-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
+.hiw-hero p{color:rgba(255,255,255,.58);max-width:500px;margin:0 auto;line-height:1.75;font-weight:300;}
+.steps{max-width:1240px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{background:#fff;border-radius:18px;padding:32px 22px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:transform .3s;}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.07);}
+.snum{width:54px;height:54px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:0 auto 16px;}
+.step h3{font-family:'Playfair Display',serif;font-size:1.08rem;margin-bottom:8px;}
+.step p{color:var(--mid);font-size:.84rem;line-height:1.65;font-weight:300;}
+
+/* FAQ */
+.faq{background:var(--cream);padding:72px 24px;}
+.faq-in{max-width:780px;margin:0 auto;}
+.fi-item{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06);}
+.fq{padding:17px 20px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;transition:background .2s;}
+.fq:hover{background:rgba(26,107,60,.04);}
+.fq .ar{transition:transform .3s;color:var(--g);}
+.fq.op .ar{transform:rotate(180deg);}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 20px;color:var(--mid);font-size:.86rem;line-height:1.75;font-weight:300;}
+.fa.op{max-height:180px;padding:0 20px 16px;}
+
+/* PILLARS */
+.pl-hero{background:var(--dark);padding:120px 24px 72px;text-align:center;}
+.pl-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
+.pl-hero p{color:rgba(255,255,255,.58);max-width:560px;margin:0 auto;line-height:1.75;font-weight:300;}
+.pl-body{max-width:1080px;margin:0 auto;padding:72px 24px;display:grid;gap:64px;}
+.pl-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.pl-row.rev{direction:rtl;}
+.pl-row.rev>*{direction:ltr;}
+.pl-row img{width:100%;height:300px;object-fit:cover;border-radius:18px;}
+.pl-txt .pn{color:var(--g);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:block;}
+.pl-txt h2{font-family:'Playfair Display',serif;font-size:1.9rem;margin-bottom:12px;}
+.pl-txt p{color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;}
+.pl-icon{font-size:2.6rem;margin-bottom:10px;display:block;}
+.pl-duo{background:var(--cream);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+
+/* TEAM */
+.tm-hero{background:var(--dark);padding:120px 24px 64px;text-align:center;}
+.tm-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
+.tm-hero p{color:rgba(255,255,255,.58);max-width:540px;margin:0 auto;line-height:1.75;font-weight:300;}
+.founders{max-width:840px;margin:0 auto;padding:60px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.fc{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08);text-align:center;transition:transform .3s;}
+.fc:hover{transform:translateY(-7px);}
+.fc img{width:100%;height:310px;object-fit:cover;object-position:top;}
+.fcb{padding:26px;}
+.fcb h3{font-family:'Playfair Display',serif;font-size:1.28rem;margin-bottom:6px;}
+.fcb .role{color:var(--g);font-weight:600;font-size:.76rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.fcb p{color:var(--mid);font-size:.84rem;line-height:1.65;font-weight:300;}
+.ftag{display:inline-block;background:var(--gold);color:var(--dark);font-size:.66rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:10px;letter-spacing:1px;text-transform:uppercase;}
+.amb{background:var(--cream);padding:60px 24px 72px;}
+.amb-in{max-width:1240px;margin:0 auto;}
+.amb-in h2{font-family:'Playfair Display',serif;font-size:1.9rem;text-align:center;margin-bottom:6px;}
+.amb-sub{text-align:center;color:var(--mid);margin-bottom:40px;font-size:.88rem;font-weight:300;}
+.amb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.ac{background:#fff;border-radius:16px;padding:22px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:all .25s;}
+.ac:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08);}
+.av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin:0 auto 10px;color:#fff;}
+.ac h4{font-size:.86rem;font-weight:600;margin-bottom:4px;}
+.ac .uni{color:var(--g);font-size:.72rem;font-weight:600;}
+.ac .ab2{display:inline-block;background:rgba(26,107,60,.08);color:var(--g);font-size:.65rem;padding:3px 9px;border-radius:10px;margin-top:7px;}
+
+/* ABOUT PAGE */
+.ap-hero{background:var(--dark);padding:120px 24px 80px;}
+.ap-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.ap-in h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:18px;line-height:1.1;}
+.ap-in p{color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:14px;font-size:.95rem;font-weight:300;}
+.ap-in img{width:100%;border-radius:18px;height:480px;object-fit:cover;}
+.vals{background:#fff;padding:80px 24px;}
+.vals-in{max-width:1240px;margin:0 auto;}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px;}
+.vc{text-align:center;padding:30px 16px;}
+.vi{font-size:2.3rem;margin-bottom:12px;}
+.vc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:8px;}
+.vc p{color:var(--mid);font-size:.82rem;line-height:1.65;font-weight:300;}
+.mis{background:var(--cream);padding:80px 24px;}
+.mis-in{max-width:840px;margin:0 auto;text-align:center;}
+.mis-in h2{font-family:'Playfair Display',serif;font-size:2.3rem;margin-bottom:20px;}
+.mis-in p{color:var(--mid);line-height:1.85;font-size:.95rem;margin-bottom:14px;font-weight:300;}
+.mq{background:var(--g);border-radius:18px;padding:40px;margin-top:40px;}
+.mq p{color:#fff;font-size:1.05rem;font-style:italic;line-height:1.75;margin:0;font-weight:300;}
+.mq cite{color:var(--gold);font-style:normal;font-size:.8rem;font-weight:600;margin-top:10px;display:block;}
+
+/* CONTACT */
+.ct-hero{background:linear-gradient(135deg,var(--g) 0%,var(--dark) 100%);padding:120px 24px 64px;text-align:center;}
+.ct-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;margin-bottom:10px;}
+.ct-hero p{color:rgba(255,255,255,.68);font-size:.95rem;font-weight:300;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1080px;margin:0 auto;padding:60px 24px 80px;}
+.cf{background:#fff;border-radius:22px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.06);}
+.cf h3{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:24px;}
+.fg{margin-bottom:14px;}
+.fg label{display:block;font-size:.7rem;font-weight:600;color:var(--mid);margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
+.fg input,.fg textarea{width:100%;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:11px 15px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;background:var(--cream);font-weight:300;transition:border-color .2s;}
+.fg input:focus,.fg textarea:focus{border-color:var(--g);background:#fff;}
+.fg textarea{height:110px;resize:none;}
+.sbtn{width:100%;background:var(--g);color:#fff;border:none;padding:13px;border-radius:28px;font:.92rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;margin-top:4px;}
+.sbtn:hover{background:var(--gl);}
+.ci h3{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:20px;}
+.ic{background:#fff;border-radius:16px;padding:26px;border:1px solid rgba(0,0,0,.06);margin-bottom:14px;}
+.ir{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
+.ir:last-child{margin-bottom:0;}
+.ii{width:40px;height:40px;border-radius:10px;background:rgba(26,107,60,.1);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ir h4{font-size:.7rem;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.ir p,.ir a{font-size:.9rem;font-weight:500;color:var(--dark);text-decoration:none;}
+.ir a:hover{color:var(--g);}
+.dc{background:var(--g);border-radius:16px;padding:28px;text-align:center;}
+.dc h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;margin-bottom:8px;}
+.dc p{color:rgba(255,255,255,.72);font-size:.84rem;margin-bottom:16px;font-weight:300;}
+.dc .ph{font-size:1.25rem;font-weight:700;color:var(--gold);display:block;margin-bottom:8px;text-decoration:none;}
+.dc small{color:rgba(255,255,255,.55);font-size:.74rem;}
+
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+.mo.op{display:flex;}
+.mb{background:#fff;border-radius:26px;padding:48px 40px;max-width:400px;width:90%;text-align:center;animation:mIn .3s ease;}
+@keyframes mIn{from{transform:scale(.88);opacity:0;}to{transform:scale(1);opacity:1;}}
+.mb .mi{font-size:2.8rem;margin-bottom:12px;}
+.mb h2{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:10px;}
+.mb p{color:var(--mid);font-size:.86rem;line-height:1.65;margin-bottom:20px;font-weight:300;}
+.mp{background:var(--g);color:#fff;padding:15px 30px;border-radius:28px;font-size:1.05rem;font-weight:700;display:block;margin-bottom:10px;text-decoration:none;}
+.mp:hover{background:var(--gl);}
+.mb small{color:var(--mid);font-size:.76rem;}
+.mc{display:block;margin:16px auto 0;background:none;border:1px solid rgba(0,0,0,.13);padding:9px 22px;border-radius:20px;cursor:pointer;color:var(--mid);font-family:'Inter',sans-serif;font-size:.82rem;}
+.mc:hover{background:var(--cream);}
+
+/* FOOTER */
+footer{background:var(--dark);padding:60px 24px 28px;}
+.fi{max-width:1240px;margin:0 auto;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.fb p{color:rgba(255,255,255,.45);font-size:.83rem;line-height:1.75;margin-top:12px;max-width:280px;font-weight:300;}
+.fc2 h4{color:#fff;font-weight:600;font-size:.84rem;margin-bottom:14px;}
+.fc2 a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.82rem;margin-bottom:8px;transition:color .2s;cursor:pointer;font-weight:300;}
+.fc2 a:hover{color:var(--gold);}
+.sl{display:flex;gap:10px;margin-top:14px;}
+.sl a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:.82rem;transition:all .2s;}
+.sl a:hover{background:var(--g);}
+.fb2{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fb2 p{color:rgba(255,255,255,.28);font-size:.75rem;font-weight:300;}
+
+/* ANIM */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.fade.in{opacity:1;transform:none;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nl{display:none;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:var(--cream);padding:14px;border-bottom:1px solid rgba(0,0,0,.08);z-index:999;gap:4px;}
+  .nl.op{display:flex;}
+  .hbg{display:flex;}
+  .db{padding:8px 14px;font-size:.76rem;}
+  .ab-in,.ap-in,.cg{grid-template-columns:1fr;}
+  .sg{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .sg3,.steps{grid-template-columns:1fr;}
+  .amb-grid{grid-template-columns:repeat(2,1fr);}
+  .vg{grid-template-columns:repeat(2,1fr);}
+  .founders{grid-template-columns:1fr;max-width:340px;}
+  .ft{grid-template-columns:1fr;gap:28px;}
+  .pl-row{grid-template-columns:1fr;}
+  .pl-row.rev{direction:ltr;}
+  .pl-duo{grid-template-columns:1fr;padding:32px;}
+  .slideshow{height:260px;}
+  .badge{left:-8px;bottom:-8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="ni">
+    <div class="logo" onclick="go('home')">
+      <div class="logo-circle"><img src="assets/logo.png" alt="Logo"/></div>
+      <span class="logo-text">ümeed <b>Foundation</b></span>
+    </div>
+    <div class="nl" id="nl">
+      <a onclick="go('home')" id="n-home" class="on">Home</a>
+      <a onclick="go('about')" id="n-about">About</a>
+      <a onclick="go('hiw')" id="n-hiw">How It Works</a>
+      <a onclick="go('pillars')" id="n-pillars">Pillars</a>
+      <a onclick="go('team')" id="n-team">Team</a>
+      <a onclick="go('contact')" id="n-contact">Contact Us</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="db" onclick="openM()">Donate Now</button>
+      <div class="hbg" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HOME ======== -->
+<div class="pg on" id="pg-home">
+
+  <div class="hero">
+    <img class="bg" src="assets/hero.jpg" alt="Inspiring children"/>
+    <div class="hero-ov"></div>
+    <div class="hero-c">
+      <div class="hero-pill">🌱 Layyah, Punjab, Pakistan</div>
+      <h1><i>Inspiring</i> Children<br/>to Dream Big</h1>
+      <p>Empowering lives through charity, education and community support. Bringing hope — Umeed — to every corner of our community.</p>
+      <div class="hbtns">
+        <button class="btn btn-g" onclick="go('about')">Learn More</button>
+        <button class="btn btn-w" onclick="openM()">Support Us</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDESHOW -->
+  <div class="ss-sec">
+    <div class="ss-head">
+      <div class="sec-tag">Our Work in Action</div>
+      <h2>Making a Difference<br/>Every Single Day</h2>
+    </div>
+    <div class="slideshow">
+      <div class="slide active"><img src="assets/slide1.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide2.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide3.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide4.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide5.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide6.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="slide"><img src="assets/slide7.jpg" alt=""/><div class="slide-ov"></div></div>
+      <div class="ss-arrows">
+        <button class="arr" onclick="prevSlide()">&#8249;</button>
+        <button class="arr" onclick="nextSlide()">&#8250;</button>
+      </div>
+    </div>
+    <div class="ss-dots" id="dots">
+      <div class="dot active" onclick="goSlide(0)"></div>
+      <div class="dot" onclick="goSlide(1)"></div>
+      <div class="dot" onclick="goSlide(2)"></div>
+      <div class="dot" onclick="goSlide(3)"></div>
+      <div class="dot" onclick="goSlide(4)"></div>
+      <div class="dot" onclick="goSlide(5)"></div>
+      <div class="dot" onclick="goSlide(6)"></div>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="ab-strip">
+    <div class="ab-in">
+      <div class="fade">
+        <span class="sec-tag" style="color:var(--gold);">Our Story</span>
+        <h2>Because Hope Should Be Everyone's Right.</h2>
+        <p>Umeed Foundation Layyah is a non-profit organization dedicated to uplifting underprivileged communities in Layyah and surrounding areas of Punjab, Pakistan.</p>
+        <p>Founded by 2 childhood best friends, the foundation works tirelessly to provide food, education, healthcare support, and emergency relief to those in need.</p>
+        <p>Our mission is to bring hope — 'Umeed' — to every corner of our community. We believe that everyone deserves access to basic necessities, education, and opportunities for a better future.</p>
+        <p class="qb">"Our purpose is simple: to transform lives and restore dignity through compassionate action and sustainable support."</p>
+        <br/>
+        <button class="btn btn-g" onclick="go('about')" style="margin-top:10px;">About Us</button>
+      </div>
+      <div class="aimg fade">
+        <img src="assets/girl.jpg" alt="Umeed Foundation — child with hope"/>
+        <div class="badge">Est.<br/>2019<small>Layyah, Punjab</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="sg">
+      <div class="si fade"><h3>1000+</h3><p>Food Packages Distributed</p></div>
+      <div class="si fade"><h3>10+</h3><p>Schools Helped</p></div>
+      <div class="si fade"><h3>500+</h3><p>Students Supported</p></div>
+      <div class="si fade"><h3>6+</h3><p>Years of Impact</p></div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div class="stories">
+    <div class="st-in">
+      <div class="fade" style="text-align:center;">
+        <div class="sec-tag">Real Impact</div>
+        <h2 class="sec-h">Transforming Lives,<br/>One Story at a Time</h2>
+        <p style="color:var(--mid);max-width:460px;margin:0 auto;font-weight:300;">These moments capture the real heart of our work across Layyah.</p>
+      </div>
+      <div class="sg3">
+        <div class="sc fade"><img src="assets/act4.jpg" alt="Education"/><div class="scb"><h4>Classrooms Full of Hope</h4><p>Children in Layyah attending school with renewed enthusiasm, supported by Umeed Foundation's education initiatives.</p></div></div>
+        <div class="sc fade"><img src="assets/act1.jpg" alt="Clothes"/><div class="scb"><h4>Warmth for Every Child</h4><p>Our volunteers distribute school uniforms ensuring no child feels left behind or excluded from learning.</p></div></div>
+        <div class="sc fade"><img src="assets/act2.jpg" alt="Food"/><div class="scb"><h4>Fighting Hunger Together</h4><p>Ration packages distributed to dozens of families during times of need and emergency relief drives.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="fade">
+      <div class="sec-tag" style="color:var(--gold);">Make a Difference</div>
+      <h2>Ready to Bring Hope<br/>to Someone's Life?</h2>
+      <p>Your support, however small, creates a ripple of change. Join Umeed Foundation in transforming lives across Layyah.</p>
+      <button class="btn btn-w" onclick="openM()">Donate Now</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======== ABOUT ======== -->
+<div class="pg" id="pg-about">
+  <div class="ap-hero">
+    <div class="ap-in">
+      <div class="fade">
+        <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">Our Story</span>
+        <h1>About Umeed Foundation</h1>
+        <p>Umeed Foundation Layyah is a non-profit organization dedicated to uplifting underprivileged communities in Layyah and surrounding areas of Punjab, Pakistan.</p>
+        <p>Founded by 2 childhood best friends, the foundation works tirelessly to provide food, education, healthcare support, and emergency relief to those in need.</p>
+        <p>Our mission is to bring hope — 'Umeed' — to every corner of our community. We believe that everyone deserves access to basic necessities, education, and opportunities for a better future.</p>
+      </div>
+      <div class="fade"><img src="assets/act1.jpg" alt="Foundation activity"/></div>
+    </div>
+  </div>
+  <div class="vals"><div class="vals-in">
+    <div class="fade" style="text-align:center;"><div class="sec-tag">What Drives Us</div><h2 class="sec-h">Our Core Values</h2></div>
+    <div class="vg">
+      <div class="vc fade"><div class="vi">💚</div><h3>Compassion</h3><p>Every person we serve is approached with empathy, dignity and genuine care.</p></div>
+      <div class="vc fade"><div class="vi">🤝</div><h3>Community</h3><p>We believe in collective action and grassroots community support.</p></div>
+      <div class="vc fade"><div class="vi">🔍</div><h3>Transparency</h3><p>Every donation is used responsibly. We are fully accountable to our donors.</p></div>
+      <div class="vc fade"><div class="vi">🌱</div><h3>Sustainability</h3><p>Long-term solutions that create lasting change, not just temporary relief.</p></div>
+    </div>
+  </div></div>
+  <div class="mis"><div class="mis-in fade">
+    <div class="sec-tag">Mission & Vision</div>
+    <h2 class="sec-h">Why We Exist</h2>
+    <p>Umeed is a Layyah based organisation with particular focus on providing quality educational and developmental services to the most vulnerable members of our society.</p>
+    <p>We envision a Punjab where no child goes to bed hungry, where every child has access to quality education, and where communities are empowered to uplift themselves.</p>
+    <div class="mq"><p>"Our purpose is simple: to transform lives and restore dignity through compassionate action and sustainable support."</p><cite>— Ali Chaudhry & Arham Khan Tangwani, Co-Founders</cite></div>
+  </div></div>
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======== HOW IT WORKS ======== -->
+<div class="pg" id="pg-hiw">
+  <div class="hiw-hero">
+    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">The Process</span>
+    <h1>How It Works</h1>
+    <p>From your generous donation to real change on the ground — here's how Umeed Foundation turns support into impact.</p>
+  </div>
+  <div class="steps fade">
+    <div class="step"><div class="snum">1</div><h3>You Donate</h3><p>Contact us via phone or social media. Every contribution goes directly to the cause.</p></div>
+    <div class="step"><div class="snum">2</div><h3>We Plan & Procure</h3><p>Our team identifies urgent needs in Layyah then procures food, clothing and supplies.</p></div>
+    <div class="step"><div class="snum">3</div><h3>We Reach Communities</h3><p>Volunteers go directly into schools, neighbourhoods and families to deliver support.</p></div>
+    <div class="step"><div class="snum">4</div><h3>Lives Change</h3><p>Children receive education, families receive food and clothing, communities grow stronger.</p></div>
+    <div class="step"><div class="snum">5</div><h3>We Report Back</h3><p>Regular updates on Instagram so you can see the direct impact of your generosity.</p></div>
+    <div class="step"><div class="snum">6</div><h3>Cycle Continues</h3><p>With continued support, we expand our reach and serve more families across Punjab.</p></div>
+  </div>
+  <div class="faq"><div class="faq-in">
+    <div class="fade" style="text-align:center;margin-bottom:44px;"><div class="sec-tag">FAQ</div><h2 class="sec-h">Frequently Asked Questions</h2></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Where does my donation go? <span class="ar">▾</span></div><div class="fa">100% goes directly to communities — food, clothing, education and emergency relief in Layyah, Punjab.</div></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">How do you ensure transparency? <span class="ar">▾</span></div><div class="fa">We share regular updates on @umeedfoundationlayyah. Our founders are personally involved in every initiative.</div></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Can I volunteer with Umeed Foundation? <span class="ar">▾</span></div><div class="fa">Absolutely! Contact us via phone or Instagram and our team will connect you with upcoming opportunities.</div></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">What areas do you serve? <span class="ar">▾</span></div><div class="fa">We primarily serve Layyah and surrounding areas of Punjab, Pakistan.</div></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Can I donate from abroad? <span class="ar">▾</span></div><div class="fa">Yes! Contact us at +44 7523 936885 or via Instagram to arrange your donation from anywhere in the world.</div></div>
+    <div class="fi-item"><div class="fq" onclick="tFaq(this)">How can I partner with Umeed Foundation? <span class="ar">▾</span></div><div class="fa">We welcome CSR partnerships and NGO collaborations. Reach out to discuss how we can work together.</div></div>
+  </div></div>
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======== PILLARS ======== -->
+<div class="pg" id="pg-pillars">
+  <div class="pl-hero">
+    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">Our Work</span>
+    <h1>Six Pillars of Hope</h1>
+    <p>Every pillar represents a basic human right. We fight every day to ensure communities of Layyah have access to all six.</p>
+  </div>
+  <div class="pl-body">
+    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">🍱</span><span class="pn">Pillar 01</span><h2>Food</h2><p>Hunger is a daily reality for too many families in Layyah. We organize regular food distribution drives, providing nutritious ration packages. During Ramadan and emergencies, we scale up to ensure no family goes without a meal.</p></div><img src="assets/act2.jpg" alt="Food"/></div>
+    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏫</span><span class="pn">Pillar 02</span><h2>Education</h2><p>Education is the most powerful tool for breaking the cycle of poverty. We support local schools with stationery, furniture and programmes designed to inspire children to dream big and reach their full potential.</p></div><img src="assets/slide4.jpg" alt="Education"/></div>
+    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">👕</span><span class="pn">Pillar 03</span><h2>Clothes</h2><p>A uniform gives a child confidence and belonging. We distribute school uniforms and winter clothing to children who cannot afford them, restoring dignity and encouraging regular school attendance.</p></div><img src="assets/slide6.jpg" alt="Clothes"/></div>
+    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏥</span><span class="pn">Pillar 04</span><h2>Healthcare</h2><p>With guidance from our co-founder Arham Khan Tangwani, a medical professional, we facilitate healthcare access for underprivileged community members through medical camps and health awareness programmes.</p></div><img src="assets/act1.jpg" alt="Healthcare"/></div>
+    <div class="pl-duo fade">
+      <div><span class="pl-icon">🏠</span><span class="pn">Pillar 05</span><h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:10px;">Shelter</h2><p style="color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;">We work to address housing challenges faced by vulnerable families, connecting them with shelter support during emergencies and advocating for safe, dignified living conditions.</p></div>
+      <div><span class="pl-icon">🛡️</span><span class="pn">Pillar 06</span><h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:10px;">Safety</h2><p style="color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;">Creating safe environments for children and women is central to our mission. We build community awareness, provide crisis support and ensure children can grow up free from harm.</p></div>
+    </div>
+  </div>
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======== TEAM ======== -->
+<div class="pg" id="pg-team">
+  <div class="tm-hero">
+    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">The People Behind the Hope</span>
+    <h1>Meet Our Team</h1>
+    <p>Two childhood best friends turned the dream of a better Layyah into reality. Meet the founders and ambassadors carrying this mission forward.</p>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:60px 24px 0;text-align:center;">
+    <div class="sec-tag">Founders</div>
+    <h2 class="sec-h">The Co-Founders</h2>
+    <p style="color:var(--mid);font-weight:300;">Childhood best friends who turned a shared dream into a movement.</p>
+  </div>
+  <div class="founders">
+    <div class="fc fade"><img src="assets/founder1.jpg" alt="Arham Khan Tangwani"/><div class="fcb"><h3>Arham Khan Tangwani</h3><div class="role">Co-Founder & Medical Advisor</div><p>A dedicated medical professional and visionary co-founder bringing healthcare expertise and commitment to uplifting communities of Layyah.</p><span class="ftag">⭐ Co-Founder</span></div></div>
+    <div class="fc fade"><img src="assets/founder2.jpg" alt="Ali Chaudhry"/><div class="fcb"><h3>Ali Chaudhry</h3><div class="role">Co-Founder & Operations Lead</div><p>A passionate changemaker who drives Umeed Foundation's strategy, community outreach and on-ground operations across Layyah and Punjab.</p><span class="ftag">⭐ Co-Founder</span></div></div>
+  </div>
+  <div class="amb" style="margin-top:60px;">
+    <div class="amb-in">
+      <h2>Campus Ambassadors 2019</h2>
+      <p class="amb-sub">Young leaders from Pakistan's top universities representing Umeed Foundation's mission.</p>
+      <div class="amb-grid">
+        <div class="ac fade"><div class="av" style="background:#1a6b3c;">H</div><h4>Huzaifa Altaf</h4><div class="uni">LUMS</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#c0392b;">M</div><h4>Menahil Sohail</h4><div class="uni">FCCU</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#c9963a;color:#111;">R</div><h4>Rana Gohar</h4><div class="uni">PLC</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#2d6a4f;">M</div><h4>Mohsin Sadiq Bhatti</h4><div class="uni">LSE</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#6b3fa0;">M</div><h4>Muhammad Abdullah</h4><div class="uni">UMT</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#1a5c8a;">M</div><h4>Muhammad Shahzaib</h4><div class="uni">LSE</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#8a3a1a;">S</div><h4>Sardar Hassan Raza Qasrani</h4><div class="uni">LSE</div><span class="ab2">Ambassador</span></div>
+        <div class="ac fade"><div class="av" style="background:#1a4a8a;">C</div><h4>Chaudhry Rizvan Hassan</h4><div class="uni">UCP</div><span class="ab2">Ambassador</span></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======== CONTACT ======== -->
+<div class="pg" id="pg-contact">
+  <div class="ct-hero">
+    <h1>Get in Touch With Us</h1>
+    <p>Whether you want to donate, volunteer, or partner — we'd love to hear from you.</p>
+  </div>
+  <div class="cg">
+    <div class="cf fade">
+      <h3>Send Us a Message</h3>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Enter your full name"/></div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+92 or +44..."/></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us how you'd like to help..."></textarea></div>
+      <button class="sbtn" onclick="alert('Thank you! We will get back to you soon.\nCall us: +44 7523 936885')">Send Message</button>
+    </div>
+    <div class="ci fade">
+      <h3>Contact Information</h3>
+      <div class="ic">
+        <div class="ir"><div class="ii">📞</div><div><h4>Phone / WhatsApp</h4><a href="tel:+447523936885">+44 7523 936885</a></div></div>
+        <div class="ir"><div class="ii">📸</div><div><h4>Instagram</h4><a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a></div></div>
+        <div class="ir"><div class="ii">📍</div><div><h4>Location</h4><p>Layyah, Punjab, Pakistan</p></div></div>
+      </div>
+      <div class="dc">
+        <h3>💚 Make a Donation</h3>
+        <p>To donate, please contact us directly. Your generosity transforms lives in Layyah.</p>
+        <a href="tel:+447523936885" class="ph">📞 +44 7523 936885</a>
+        <small>Available via Call & WhatsApp<br/>Jazak Allah Khair for your generosity 🙏</small>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="fi">
+      <div class="ft">
+        <div class="fb">
+          <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
+          <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
+          <div class="sl">
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
+            <a href="tel:+447523936885">📞</a>
+          </div>
+        </div>
+        <div class="fc2">
+          <h4>Navigate</h4>
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('about')">About Us</a>
+          <a onclick="go('hiw')">How It Works</a>
+          <a onclick="go('pillars')">Pillars</a>
+          <a onclick="go('team')">Team</a>
+          <a onclick="go('contact')">Contact</a>
+        </div>
+        <div class="fc2">
+          <h4>Contact</h4>
+          <a href="tel:+447523936885">+44 7523 936885</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a>Layyah, Punjab, Pakistan</a>
+        </div>
+      </div>
+      <div class="fb2">
+        <p>© 2025 Umeed Foundation Layyah. All rights reserved.</p>
+        <p>Made with ❤️ for Layyah</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="mo" id="modal" onclick="closeOut(event)">
+  <div class="mb">
+    <div class="mi">💚</div>
+    <h2>Support Umeed Foundation</h2>
+    <p>To make a donation, please contact us directly. Every contribution brings hope to families in Layyah.</p>
+    <a href="tel:+447523936885" class="mp">📞 +44 7523 936885</a>
+    <small>Available via Call & WhatsApp<br/>Jazak Allah Khair for your generosity 🙏</small>
+    <button class="mc" onclick="closeM()">Close</button>
+  </div>
+</div>
+
+<script>
+function go(name){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pg-'+name).classList.add('on');
+  document.querySelectorAll('.nl a').forEach(a=>a.classList.remove('on'));
+  const el=document.getElementById('n-'+name);
+  if(el) el.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('nl').classList.remove('op');
+  setTimeout(initFade,120);
+}
+function toggleMenu(){document.getElementById('nl').classList.toggle('op');}
+function openM(){document.getElementById('modal').classList.add('op');}
+function closeM(){document.getElementById('modal').classList.remove('op');}
+function closeOut(e){if(e.target.id==='modal')closeM();}
+function tFaq(el){el.classList.toggle('op');el.nextElementSibling.classList.toggle('op');}
+
+// SLIDESHOW
+let cur=0;
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+let timer=setInterval(nextSlide,3500);
+function goSlide(n){
+  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+  cur=n;slides[cur].classList.add('active');dots[cur].classList.add('active');
+}
+function nextSlide(){goSlide((cur+1)%slides.length);}
+function prevSlide(){goSlide((cur-1+slides.length)%slides.length);clearInterval(timer);timer=setInterval(nextSlide,3500);}
+
+// FADE
+function initFade(){
+  const els=document.querySelectorAll('.pg.on .fade:not(.in)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:0.08});
+  els.forEach(el=>obs.observe(el));
+}
+document.addEventListener('DOMContentLoaded',initFade);
+initFade();
+</script>
+</body>
+</html>
