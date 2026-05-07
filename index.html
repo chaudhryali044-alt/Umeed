@@ -127,6 +127,24 @@ nav{position:fixed;inset:0 0 auto;z-index:1000;background:rgba(248,246,240,.97);
 .scb h4{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:9px;}
 .scb p{color:var(--mid);font-size:.84rem;line-height:1.68;font-weight:300;}
 
+/* ── INSTAGRAM FEED ──────────────────────────── */
+.ig-sec{background:var(--dark);padding:88px 24px;}
+.ig-head{max-width:1240px;margin:0 auto 44px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.ig-head-txt .sec-tag{color:var(--gold);}
+.ig-head-txt h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;margin-top:6px;}
+.ig-head-txt p{color:rgba(255,255,255,.5);font-size:.88rem;font-weight:300;margin-top:8px;max-width:460px;line-height:1.7;}
+.ig-follow{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;padding:11px 24px;border-radius:24px;text-decoration:none;font-size:.84rem;font-weight:600;transition:opacity .2s,transform .2s;white-space:nowrap;}
+.ig-follow:hover{opacity:.88;transform:translateY(-2px);}
+.ig-widget-wrap{max-width:1240px;margin:0 auto;}
+/* fallback grid shown while widget loads */
+.ig-fallback{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;border-radius:12px;overflow:hidden;max-width:1240px;margin:0 auto;}
+.ig-ph{aspect-ratio:1;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,.15);}
+.ig-note{text-align:center;margin-top:28px;color:rgba(255,255,255,.32);font-size:.78rem;font-weight:300;line-height:1.7;}
+.ig-note a{color:var(--gold);text-decoration:none;}
+.ig-note a:hover{text-decoration:underline;}
+/* Elfsight overrides for dark theme */
+.eapps-instagram-feed{--eapps-instagram-feed-header-display:none!important;}
+
 /* ── CTA ─────────────────────────────────────── */
 .cta{background:linear-gradient(135deg,var(--g) 0%,#0d3d22 100%);padding:88px 24px;text-align:center;position:relative;overflow:hidden;}
 .cta::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3C/g%3E%3C/svg%3E");}
@@ -323,6 +341,9 @@ footer{background:var(--dark);padding:64px 24px 30px;}
   .pl-row{grid-template-columns:1fr;}
   .pl-row.rev{direction:ltr;}
   .pl-duo{grid-template-columns:1fr;padding:34px;}
+  .ig-head{flex-direction:column;align-items:flex-start;}
+  .ig-follow{font-size:.78rem;padding:10px 18px;}
+  .ig-fallback{grid-template-columns:repeat(2,1fr);}
   .slideshow{height:280px;}
   .slide-caption{bottom:16px;left:18px;right:60px;}
   .slide-caption h4{font-size:.92rem;}
@@ -494,6 +515,59 @@ footer{background:var(--dark);padding:64px 24px 30px;}
           <div class="scb"><h4>Fighting Hunger Together</h4><p>Ration packages distributed to dozens of families during times of need and emergency relief drives.</p></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM FEED -->
+  <div class="ig-sec">
+    <div class="ig-head fade">
+      <div class="ig-head-txt">
+        <div class="sec-tag">Follow Our Journey</div>
+        <h2>Our Work on the Ground</h2>
+        <p>Real moments from Layyah — follow <strong style="color:rgba(255,255,255,.75);">@umeedfoundationlayyah</strong> for live updates on every drive, every smile, every life we touch.</p>
+      </div>
+      <a class="ig-follow"
+         href="https://www.instagram.com/umeedfoundationlayyah"
+         target="_blank" rel="noopener"
+         aria-label="Follow Umeed Foundation on Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Follow @umeedfoundationlayyah
+      </a>
+    </div>
+
+    <div class="ig-widget-wrap fade">
+      <!--
+        ═══════════════════════════════════════════════════════════════
+        LIVE INSTAGRAM FEED — SETUP REQUIRED (takes ~3 minutes, free)
+        ═══════════════════════════════════════════════════════════════
+        1. Go to https://elfsight.com/instagram-feed-widget/
+        2. Click "Create Widget" → connect @umeedfoundationlayyah
+        3. Choose "Grid" layout → click "Add to website"
+        4. Copy the widget code — it looks like:
+             <div class="elfsight-app-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"></div>
+        5. Replace the placeholder div below with your widget div
+        6. The <script> tag at the bottom of this file loads Elfsight automatically
+        ═══════════════════════════════════════════════════════════════
+      -->
+
+      <!-- ▼ REPLACE THIS DIV with your Elfsight widget div ▼ -->
+      <div class="elfsight-app-REPLACE_WITH_YOUR_WIDGET_ID" data-elfsight-app-lazy></div>
+      <!-- ▲ ─────────────────────────────────────────────── ▲ -->
+
+      <!-- Placeholder grid — hidden once Elfsight widget loads -->
+      <div class="ig-fallback" id="igFallback" aria-hidden="true">
+        <div class="ig-ph">📸</div><div class="ig-ph">🏫</div>
+        <div class="ig-ph">🍱</div><div class="ig-ph">👕</div>
+        <div class="ig-ph">💚</div><div class="ig-ph">📚</div>
+        <div class="ig-ph">🤝</div><div class="ig-ph">🌱</div>
+      </div>
+
+      <p class="ig-note">
+        Live feed powered by <a href="https://elfsight.com" target="_blank" rel="noopener">Elfsight</a> ·
+        See all posts on
+        <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
+        <br><em style="font-size:.72rem;opacity:.6;">(Widget setup takes ~3 minutes at elfsight.com — free tier available)</em>
+      </p>
     </div>
   </div>
 
@@ -1090,6 +1164,18 @@ if(form){
     btn.textContent='Send Message ✉️';
   });
 }
+
+/* hide placeholder fallback once Elfsight injects real content */
+const igFallback=document.getElementById('igFallback');
+if(igFallback){
+  const igObs=new MutationObserver(()=>{
+    const widget=document.querySelector('.elfsight-app-REPLACE_WITH_YOUR_WIDGET_ID .eapps-instagram-feed-posts');
+    if(widget){igFallback.style.display='none';igObs.disconnect();}
+  });
+  igObs.observe(document.body,{childList:true,subtree:true});
+}
 </script>
+<!-- Elfsight platform script — loads your Instagram feed widget -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
 </body>
 </html>
