@@ -3,288 +3,362 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Umeed Foundation Layyah</title>
+<title>Umeed Foundation Layyah — Bringing Hope to Punjab, Pakistan</title>
+<meta name="description" content="Umeed Foundation Layyah is a non-profit empowering underprivileged communities in Punjab, Pakistan through food, education, healthcare, clothing, shelter and safety."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Umeed Foundation Layyah"/>
+<meta property="og:description" content="Bringing hope — Umeed — to every corner of Layyah through charity, education and community support."/>
+<meta property="og:image" content="assets/hero.jpg"/>
+<meta property="og:url" content="https://umeedfoundationlayyah.org"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Umeed Foundation Layyah"/>
+<meta name="twitter:description" content="Bringing hope to Punjab, Pakistan through charity, education and community support."/>
+<meta name="twitter:image" content="assets/hero.jpg"/>
+<link rel="canonical" href="https://umeedfoundationlayyah.org"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-:root{--g:#1a6b3c;--gl:#2d8a52;--r:#c0392b;--cream:#f8f6f0;--dark:#0d1a10;--mid:#4a5c4e;--gold:#c9963a;}
+:root{
+  --g:#1a6b3c;--gl:#2d8a52;--r:#c0392b;
+  --cream:#f8f6f0;--cream2:#f0ece3;
+  --dark:#0d1a10;--mid:#4a5c4e;
+  --gold:#c9963a;--gold2:#e8b44a;
+  --shadow:rgba(13,26,16,.09);
+  --radius:18px;
+}
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
 
-/* NAV */
-nav{position:fixed;inset:0 0 auto;z-index:1000;background:rgba(248,246,240,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,107,60,.1);box-shadow:0 2px 20px rgba(0,0,0,.06);}
-.ni{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
-.logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.logo-circle{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(26,107,60,.2);flex-shrink:0;}
+/* ── FOCUS RING ─────────────────────────────── */
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+/* ── NAV ─────────────────────────────────────── */
+nav{position:fixed;inset:0 0 auto;z-index:1000;background:rgba(248,246,240,.97);backdrop-filter:blur(18px);border-bottom:1px solid rgba(26,107,60,.1);box-shadow:0 2px 24px rgba(0,0,0,.06);transition:box-shadow .3s;}
+.ni{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;}
+.logo-circle{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid rgba(26,107,60,.22);flex-shrink:0;}
 .logo-circle img{width:100%;height:100%;object-fit:cover;}
 .logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--g);}
 .logo-text b{color:var(--r);}
 .nl{display:flex;gap:2px;}
-.nl a{color:var(--mid);font-size:.82rem;font-weight:500;padding:7px 12px;border-radius:7px;cursor:pointer;transition:all .2s;}
+.nl a{color:var(--mid);font-size:.82rem;font-weight:500;padding:7px 12px;border-radius:8px;cursor:pointer;transition:background .18s,color .18s;border:none;background:none;}
 .nl a:hover,.nl a.on{background:var(--g);color:#fff;}
-.db{background:var(--r);color:#fff;border:none;padding:10px 22px;border-radius:24px;font:.85rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;}
-.db:hover{background:#a93226;transform:translateY(-1px);}
-.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hbg span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;}
+.db{background:var(--r);color:#fff;border:none;padding:10px 22px;border-radius:24px;font:.85rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;}
+.db:hover{background:#a93226;transform:translateY(-1px);box-shadow:0 6px 18px rgba(192,57,43,.32);}
+/* hamburger */
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none;border-radius:6px;}
+.hbg span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:transform .3s,opacity .3s;}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* PAGES */
-.pg{display:none;padding-top:72px;min-height:100vh;}
+/* ── PAGES ───────────────────────────────────── */
+.pg{display:none;padding-top:70px;min-height:100vh;}
 .pg.on{display:block;}
 
-/* HERO */
+/* ── HERO ────────────────────────────────────── */
 .hero{position:relative;height:95vh;min-height:580px;overflow:hidden;display:flex;align-items:flex-end;}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,8,.95) 0%,rgba(5,18,8,.4) 55%,transparent 100%);}
-.hero-c{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 24px 64px;width:100%;}
-.hero-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(201,150,58,.4);color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px;background:rgba(201,150,58,.08);}
-.hero-c h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:18px;max-width:700px;}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,18,8,.96) 0%,rgba(5,18,8,.35) 55%,transparent 100%);}
+.hero-c{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 24px 72px;width:100%;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,150,58,.45);color:var(--gold);font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:20px;margin-bottom:24px;background:rgba(201,150,58,.09);}
+.hero-c h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.04;margin-bottom:18px;max-width:700px;}
 .hero-c h1 i{color:var(--gold);font-style:italic;}
-.hero-c p{color:rgba(255,255,255,.75);font-size:1rem;max-width:480px;line-height:1.8;margin-bottom:34px;font-weight:300;}
+.hero-c p{color:rgba(255,255,255,.72);font-size:1rem;max-width:480px;line-height:1.82;margin-bottom:36px;font-weight:300;}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;}
-.btn{padding:13px 32px;border-radius:30px;font:.88rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .25s;border:none;}
-.btn-g{background:var(--g);color:#fff;}
-.btn-g:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,60,.35);}
-.btn-w{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);}
-.btn-w:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.btn{padding:13px 32px;border-radius:30px;font:.88rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .25s;border:2px solid transparent;display:inline-flex;align-items:center;gap:8px;}
+.btn-g{background:var(--g);color:#fff;border-color:var(--g);}
+.btn-g:hover{background:var(--gl);border-color:var(--gl);transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,107,60,.38);}
+.btn-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.42);}
+.btn-w:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+/* scroll indicator */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;z-index:2;}
+.scroll-hint svg{animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
 
-/* SLIDESHOW */
-.ss-sec{background:var(--dark);padding:64px 24px;}
+/* ── SLIDESHOW ───────────────────────────────── */
+.ss-sec{background:var(--dark);padding:72px 24px;}
 .ss-head{max-width:1240px;margin:0 auto 36px;}
 .ss-head .sec-tag{color:var(--gold);}
 .ss-head h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-top:6px;}
-.slideshow{position:relative;max-width:1240px;margin:0 auto;border-radius:20px;overflow:hidden;height:460px;}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
+.slideshow{position:relative;max-width:1240px;margin:0 auto;border-radius:var(--radius);overflow:hidden;height:480px;box-shadow:0 24px 64px rgba(0,0,0,.45);}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .85s ease;}
 .slide.active{opacity:1;}
 .slide img{width:100%;height:100%;object-fit:cover;}
-.slide-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0%,transparent 60%);}
-.ss-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;pointer-events:none;z-index:2;}
-.arr{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;pointer-events:all;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-.arr:hover{background:rgba(255,255,255,.3);}
-.ss-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;}
-.dot.active{background:var(--gold);width:24px;border-radius:4px;}
+.slide-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.62) 0%,transparent 55%);}
+.slide-caption{position:absolute;bottom:28px;left:32px;right:80px;z-index:3;}
+.slide-caption h4{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+.slide-caption p{color:rgba(255,255,255,.72);font-size:.78rem;font-weight:300;}
+.ss-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;pointer-events:none;z-index:4;}
+.arr{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);color:#fff;cursor:pointer;pointer-events:all;transition:background .2s,transform .2s;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.arr:hover{background:rgba(255,255,255,.3);transform:scale(1.08);}
+.ss-dots{display:flex;justify-content:center;gap:8px;margin-top:20px;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:all .3s;border:none;}
+.dot.active{background:var(--gold);width:26px;border-radius:4px;}
 
-/* ABOUT STRIP */
-.ab-strip{background:var(--dark);padding:80px 24px;}
-.ab-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.ab-in h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:20px;}
-.ab-in p{color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:14px;font-size:.95rem;font-weight:300;}
-.qb{border-left:3px solid var(--gold);padding-left:18px;color:rgba(255,255,255,.82)!important;font-style:italic;margin-top:22px!important;}
+/* ── ABOUT STRIP ─────────────────────────────── */
+.ab-strip{background:var(--dark);padding:88px 24px;}
+.ab-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.ab-in h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.18;margin-bottom:22px;}
+.ab-in p{color:rgba(255,255,255,.62);line-height:1.88;margin-bottom:15px;font-size:.95rem;font-weight:300;}
+.qb{border-left:3px solid var(--gold);padding-left:18px;color:rgba(255,255,255,.82)!important;font-style:italic;margin-top:24px!important;}
 .aimg{position:relative;}
-.aimg img{width:100%;border-radius:18px;object-fit:cover;height:450px;object-position:top;}
-.badge{position:absolute;bottom:-14px;left:-14px;background:var(--gold);color:var(--dark);padding:16px 20px;border-radius:14px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;text-align:center;line-height:1.2;box-shadow:0 8px 24px rgba(0,0,0,.3);}
-.badge small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;font-weight:400;margin-top:2px;opacity:.8;}
+.aimg img{width:100%;border-radius:var(--radius);object-fit:cover;height:460px;object-position:top;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.badge{position:absolute;bottom:-16px;left:-16px;background:var(--gold);color:var(--dark);padding:18px 22px;border-radius:14px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;text-align:center;line-height:1.2;box-shadow:0 10px 28px rgba(0,0,0,.32);}
+.badge small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;font-weight:500;margin-top:3px;opacity:.78;}
 
-/* STATS */
-.stats{background:var(--g);padding:64px 24px;}
-.sg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
-.si h3{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#fff;line-height:1;margin-bottom:10px;}
-.si p{color:rgba(255,255,255,.65);font-size:.73rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
+/* ── STATS ───────────────────────────────────── */
+.stats{background:var(--g);padding:72px 24px;position:relative;overflow:hidden;}
+.stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.sg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center;position:relative;}
+.sg .si{padding:16px 24px;border-right:1px solid rgba(255,255,255,.15);}
+.sg .si:last-child{border-right:none;}
+.si h3{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:12px;}
+.si p{color:rgba(255,255,255,.62);font-size:.72rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:500;}
 
-/* STORIES */
-.stories{background:#fff;padding:80px 24px;}
+/* ── STORIES ─────────────────────────────────── */
+.stories{background:#fff;padding:88px 24px;}
 .st-in{max-width:1240px;margin:0 auto;}
-.sg3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
-.sc{border-radius:18px;overflow:hidden;background:var(--cream);transition:transform .3s;}
-.sc:hover{transform:translateY(-7px);}
-.sc img{width:100%;height:220px;object-fit:cover;}
-.scb{padding:22px;}
-.scb h4{font-family:'Playfair Display',serif;font-size:1.02rem;margin-bottom:8px;}
-.scb p{color:var(--mid);font-size:.83rem;line-height:1.65;font-weight:300;}
+.sg3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.sc{border-radius:var(--radius);overflow:hidden;background:var(--cream);transition:transform .3s,box-shadow .3s;box-shadow:0 2px 12px var(--shadow);}
+.sc:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(13,26,16,.13);}
+.sc img{width:100%;height:224px;object-fit:cover;}
+.scb{padding:24px;}
+.scb h4{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:9px;}
+.scb p{color:var(--mid);font-size:.84rem;line-height:1.68;font-weight:300;}
 
-/* CTA */
-.cta{background:var(--g);padding:80px 24px;text-align:center;}
-.cta h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:14px;}
-.cta p{color:rgba(255,255,255,.7);max-width:440px;margin:0 auto 30px;font-size:.95rem;line-height:1.75;font-weight:300;}
+/* ── CTA ─────────────────────────────────────── */
+.cta{background:linear-gradient(135deg,var(--g) 0%,#0d3d22 100%);padding:88px 24px;text-align:center;position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3C/g%3E%3C/svg%3E");}
+.cta>div{position:relative;z-index:1;}
+.cta h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;}
+.cta p{color:rgba(255,255,255,.68);max-width:440px;margin:0 auto 32px;font-size:.95rem;line-height:1.78;font-weight:300;}
 
-/* SECTION HELPERS */
-.sec-tag{display:inline-block;color:var(--g);font-weight:600;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:14px;}
+/* ── SECTION HELPERS ─────────────────────────── */
+.sec-tag{display:inline-block;color:var(--g);font-weight:600;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.18;margin-bottom:14px;}
 
-/* HOW IT WORKS */
+/* ── HOW IT WORKS ────────────────────────────── */
 .hiw-hero{background:var(--dark);padding:120px 24px 72px;text-align:center;}
-.hiw-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
-.hiw-hero p{color:rgba(255,255,255,.58);max-width:500px;margin:0 auto;line-height:1.75;font-weight:300;}
-.steps{max-width:1240px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.step{background:#fff;border-radius:18px;padding:32px 22px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:transform .3s;}
-.step:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(0,0,0,.07);}
-.snum{width:54px;height:54px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:0 auto 16px;}
-.step h3{font-family:'Playfair Display',serif;font-size:1.08rem;margin-bottom:8px;}
-.step p{color:var(--mid);font-size:.84rem;line-height:1.65;font-weight:300;}
+.hiw-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:14px;}
+.hiw-hero p{color:rgba(255,255,255,.55);max-width:500px;margin:0 auto;line-height:1.78;font-weight:300;}
+.steps-wrap{max-width:1240px;margin:0 auto;padding:80px 24px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;}
+/* connector line behind steps */
+.steps::before{content:'';position:absolute;top:44px;left:calc(16.66% + 12px);right:calc(16.66% + 12px);height:2px;background:linear-gradient(90deg,var(--g),var(--gold),var(--g));opacity:.3;pointer-events:none;}
+.step{background:#fff;border-radius:var(--radius);padding:34px 24px 28px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;position:relative;}
+.step::before{content:'';position:absolute;top:0;left:24px;right:24px;height:3px;background:var(--g);border-radius:0 0 3px 3px;opacity:0;transition:opacity .3s;}
+.step:hover{transform:translateY(-7px);box-shadow:0 20px 40px rgba(13,26,16,.1);}
+.step:hover::before{opacity:1;}
+.snum{width:54px;height:54px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:0 auto 18px;box-shadow:0 6px 18px rgba(26,107,60,.3);}
+.step h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:10px;}
+.step p{color:var(--mid);font-size:.84rem;line-height:1.68;font-weight:300;}
 
-/* FAQ */
-.faq{background:var(--cream);padding:72px 24px;}
+/* ── FAQ ─────────────────────────────────────── */
+.faq{background:var(--cream2);padding:80px 24px;}
 .faq-in{max-width:780px;margin:0 auto;}
-.fi-item{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06);}
-.fq{padding:17px 20px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;transition:background .2s;}
+.fi-item{background:#fff;border-radius:13px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 8px var(--shadow);}
+.fq{padding:18px 22px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;transition:background .2s;border:none;width:100%;background:transparent;text-align:left;font-family:'Inter',sans-serif;color:var(--dark);}
 .fq:hover{background:rgba(26,107,60,.04);}
-.fq .ar{transition:transform .3s;color:var(--g);}
+.fq .ar{transition:transform .32s;color:var(--g);flex-shrink:0;margin-left:12px;}
 .fq.op .ar{transform:rotate(180deg);}
-.fa{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 20px;color:var(--mid);font-size:.86rem;line-height:1.75;font-weight:300;}
-.fa.op{max-height:180px;padding:0 20px 16px;}
+.fa{max-height:0;overflow:hidden;transition:max-height .38s ease;padding:0 22px;color:var(--mid);font-size:.87rem;line-height:1.78;font-weight:300;}
+.fa.op{max-height:200px;padding:0 22px 18px;}
 
-/* PILLARS */
+/* ── PILLARS ─────────────────────────────────── */
 .pl-hero{background:var(--dark);padding:120px 24px 72px;text-align:center;}
-.pl-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
-.pl-hero p{color:rgba(255,255,255,.58);max-width:560px;margin:0 auto;line-height:1.75;font-weight:300;}
-.pl-body{max-width:1080px;margin:0 auto;padding:72px 24px;display:grid;gap:64px;}
-.pl-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.pl-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:14px;}
+.pl-hero p{color:rgba(255,255,255,.55);max-width:560px;margin:0 auto;line-height:1.78;font-weight:300;}
+.pl-body{max-width:1080px;margin:0 auto;padding:80px 24px;display:grid;gap:72px;}
+.pl-row{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
 .pl-row.rev{direction:rtl;}
 .pl-row.rev>*{direction:ltr;}
-.pl-row img{width:100%;height:300px;object-fit:cover;border-radius:18px;}
-.pl-txt .pn{color:var(--g);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:block;}
-.pl-txt h2{font-family:'Playfair Display',serif;font-size:1.9rem;margin-bottom:12px;}
-.pl-txt p{color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;}
-.pl-icon{font-size:2.6rem;margin-bottom:10px;display:block;}
-.pl-duo{background:var(--cream);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.pl-row img{width:100%;height:310px;object-fit:cover;border-radius:var(--radius);box-shadow:0 16px 48px rgba(0,0,0,.14);}
+.pl-txt .pn{color:var(--g);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;display:block;}
+.pl-txt h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:14px;}
+.pl-txt p{color:var(--mid);line-height:1.88;font-size:.93rem;font-weight:300;}
+.pl-icon{font-size:2.8rem;margin-bottom:12px;display:block;}
+.pl-duo{background:var(--cream2);border-radius:20px;padding:52px;display:grid;grid-template-columns:1fr 1fr;gap:44px;border:1px solid rgba(0,0,0,.06);}
 
-/* TEAM */
+/* ── TEAM ────────────────────────────────────── */
 .tm-hero{background:var(--dark);padding:120px 24px 64px;text-align:center;}
-.tm-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:12px;}
-.tm-hero p{color:rgba(255,255,255,.58);max-width:540px;margin:0 auto;line-height:1.75;font-weight:300;}
-.founders{max-width:840px;margin:0 auto;padding:60px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:36px;}
-.fc{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08);text-align:center;transition:transform .3s;}
-.fc:hover{transform:translateY(-7px);}
-.fc img{width:100%;height:310px;object-fit:cover;object-position:top;}
-.fcb{padding:26px;}
-.fcb h3{font-family:'Playfair Display',serif;font-size:1.28rem;margin-bottom:6px;}
-.fcb .role{color:var(--g);font-weight:600;font-size:.76rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
-.fcb p{color:var(--mid);font-size:.84rem;line-height:1.65;font-weight:300;}
-.ftag{display:inline-block;background:var(--gold);color:var(--dark);font-size:.66rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:10px;letter-spacing:1px;text-transform:uppercase;}
-.amb{background:var(--cream);padding:60px 24px 72px;}
+.tm-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:14px;}
+.tm-hero p{color:rgba(255,255,255,.55);max-width:540px;margin:0 auto;line-height:1.78;font-weight:300;}
+.founders{max-width:840px;margin:0 auto;padding:64px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.fc{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.1);text-align:center;transition:transform .3s,box-shadow .3s;}
+.fc:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.16);}
+.fc img{width:100%;height:320px;object-fit:cover;object-position:top;}
+.fcb{padding:28px;}
+.fcb h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:7px;}
+.fcb .role{color:var(--g);font-weight:600;font-size:.74rem;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px;}
+.fcb p{color:var(--mid);font-size:.84rem;line-height:1.68;font-weight:300;}
+.ftag{display:inline-block;background:var(--gold);color:var(--dark);font-size:.64rem;font-weight:700;padding:5px 13px;border-radius:20px;margin-top:12px;letter-spacing:1px;text-transform:uppercase;}
+.amb{background:var(--cream2);padding:64px 24px 80px;}
 .amb-in{max-width:1240px;margin:0 auto;}
-.amb-in h2{font-family:'Playfair Display',serif;font-size:1.9rem;text-align:center;margin-bottom:6px;}
-.amb-sub{text-align:center;color:var(--mid);margin-bottom:40px;font-size:.88rem;font-weight:300;}
+.amb-in h2{font-family:'Playfair Display',serif;font-size:2rem;text-align:center;margin-bottom:8px;}
+.amb-sub{text-align:center;color:var(--mid);margin-bottom:44px;font-size:.88rem;font-weight:300;}
 .amb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.ac{background:#fff;border-radius:16px;padding:22px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:all .25s;}
-.ac:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08);}
-.av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin:0 auto 10px;color:#fff;}
-.ac h4{font-size:.86rem;font-weight:600;margin-bottom:4px;}
+.ac{background:#fff;border-radius:16px;padding:24px;text-align:center;border:1px solid rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s;}
+.ac:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.09);}
+.av{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin:0 auto 12px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18);}
+.ac h4{font-size:.87rem;font-weight:600;margin-bottom:5px;}
 .ac .uni{color:var(--g);font-size:.72rem;font-weight:600;}
-.ac .ab2{display:inline-block;background:rgba(26,107,60,.08);color:var(--g);font-size:.65rem;padding:3px 9px;border-radius:10px;margin-top:7px;}
+.ac .ab2{display:inline-block;background:rgba(26,107,60,.09);color:var(--g);font-size:.65rem;padding:3px 10px;border-radius:10px;margin-top:8px;}
 
-/* ABOUT PAGE */
-.ap-hero{background:var(--dark);padding:120px 24px 80px;}
-.ap-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.ap-in h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:18px;line-height:1.1;}
-.ap-in p{color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:14px;font-size:.95rem;font-weight:300;}
-.ap-in img{width:100%;border-radius:18px;height:480px;object-fit:cover;}
-.vals{background:#fff;padding:80px 24px;}
+/* ── ABOUT PAGE ──────────────────────────────── */
+.ap-hero{background:var(--dark);padding:120px 24px 88px;}
+.ap-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.ap-in h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;margin-bottom:20px;line-height:1.08;}
+.ap-in p{color:rgba(255,255,255,.62);line-height:1.88;margin-bottom:15px;font-size:.95rem;font-weight:300;}
+.ap-in img{width:100%;border-radius:var(--radius);height:490px;object-fit:cover;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.vals{background:#fff;padding:88px 24px;}
 .vals-in{max-width:1240px;margin:0 auto;}
-.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px;}
-.vc{text-align:center;padding:30px 16px;}
-.vi{font-size:2.3rem;margin-bottom:12px;}
-.vc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:8px;}
-.vc p{color:var(--mid);font-size:.82rem;line-height:1.65;font-weight:300;}
-.mis{background:var(--cream);padding:80px 24px;}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:52px;}
+.vc{text-align:center;padding:32px 18px;border-radius:var(--radius);background:var(--cream2);transition:transform .3s,box-shadow .3s;}
+.vc:hover{transform:translateY(-5px);box-shadow:0 12px 32px var(--shadow);}
+.vi{font-size:2.4rem;margin-bottom:14px;}
+.vc h3{font-family:'Playfair Display',serif;font-size:1.08rem;margin-bottom:9px;}
+.vc p{color:var(--mid);font-size:.82rem;line-height:1.68;font-weight:300;}
+.mis{background:var(--cream2);padding:88px 24px;}
 .mis-in{max-width:840px;margin:0 auto;text-align:center;}
-.mis-in h2{font-family:'Playfair Display',serif;font-size:2.3rem;margin-bottom:20px;}
-.mis-in p{color:var(--mid);line-height:1.85;font-size:.95rem;margin-bottom:14px;font-weight:300;}
-.mq{background:var(--g);border-radius:18px;padding:40px;margin-top:40px;}
-.mq p{color:#fff;font-size:1.05rem;font-style:italic;line-height:1.75;margin:0;font-weight:300;}
-.mq cite{color:var(--gold);font-style:normal;font-size:.8rem;font-weight:600;margin-top:10px;display:block;}
+.mis-in h2{font-family:'Playfair Display',serif;font-size:2.4rem;margin-bottom:22px;}
+.mis-in p{color:var(--mid);line-height:1.88;font-size:.95rem;margin-bottom:15px;font-weight:300;}
+.mq{background:var(--g);border-radius:var(--radius);padding:44px;margin-top:44px;}
+.mq p{color:#fff;font-size:1.08rem;font-style:italic;line-height:1.78;margin:0;font-weight:300;}
+.mq cite{color:var(--gold);font-style:normal;font-size:.8rem;font-weight:600;margin-top:12px;display:block;}
 
-/* CONTACT */
+/* ── CONTACT ─────────────────────────────────── */
 .ct-hero{background:linear-gradient(135deg,var(--g) 0%,var(--dark) 100%);padding:120px 24px 64px;text-align:center;}
-.ct-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;margin-bottom:10px;}
-.ct-hero p{color:rgba(255,255,255,.68);font-size:.95rem;font-weight:300;}
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1080px;margin:0 auto;padding:60px 24px 80px;}
-.cf{background:#fff;border-radius:22px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.06);}
-.cf h3{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:24px;}
-.fg{margin-bottom:14px;}
-.fg label{display:block;font-size:.7rem;font-weight:600;color:var(--mid);margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase;}
-.fg input,.fg textarea{width:100%;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:11px 15px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;background:var(--cream);font-weight:300;transition:border-color .2s;}
-.fg input:focus,.fg textarea:focus{border-color:var(--g);background:#fff;}
-.fg textarea{height:110px;resize:none;}
-.sbtn{width:100%;background:var(--g);color:#fff;border:none;padding:13px;border-radius:28px;font:.92rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .2s;margin-top:4px;}
-.sbtn:hover{background:var(--gl);}
-.ci h3{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:20px;}
-.ic{background:#fff;border-radius:16px;padding:26px;border:1px solid rgba(0,0,0,.06);margin-bottom:14px;}
-.ir{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
+.ct-hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;margin-bottom:12px;}
+.ct-hero p{color:rgba(255,255,255,.65);font-size:.95rem;font-weight:300;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1080px;margin:0 auto;padding:64px 24px 88px;}
+.cf{background:#fff;border-radius:22px;padding:44px;box-shadow:0 12px 48px var(--shadow);}
+.cf h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:26px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:.68rem;font-weight:600;color:var(--mid);margin-bottom:6px;letter-spacing:.6px;text-transform:uppercase;}
+.fg input,.fg textarea,.fg select{width:100%;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 16px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;background:var(--cream);font-weight:300;transition:border-color .2s,background .2s;color:var(--dark);}
+.fg input:focus,.fg textarea:focus{border-color:var(--g);background:#fff;box-shadow:0 0 0 3px rgba(26,107,60,.08);}
+.fg textarea{height:112px;resize:none;}
+.fg.has-error input,.fg.has-error textarea{border-color:var(--r);}
+.fg .err-msg{color:var(--r);font-size:.72rem;margin-top:4px;display:none;}
+.fg.has-error .err-msg{display:block;}
+.sbtn{width:100%;background:var(--g);color:#fff;border:none;padding:14px;border-radius:28px;font:.92rem/1 'Inter',sans-serif;font-weight:600;cursor:pointer;transition:background .2s,transform .2s;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.sbtn:hover{background:var(--gl);transform:translateY(-1px);}
+.sbtn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.form-msg{display:none;padding:14px 18px;border-radius:10px;font-size:.86rem;font-weight:500;margin-top:12px;}
+.form-msg.ok{background:rgba(26,107,60,.1);color:var(--g);display:block;}
+.form-msg.err{background:rgba(192,57,43,.1);color:var(--r);display:block;}
+.ci h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:22px;}
+.ic{background:#fff;border-radius:16px;padding:28px;border:1px solid rgba(0,0,0,.06);margin-bottom:16px;box-shadow:0 2px 12px var(--shadow);}
+.ir{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
 .ir:last-child{margin-bottom:0;}
-.ii{width:40px;height:40px;border-radius:10px;background:rgba(26,107,60,.1);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
-.ir h4{font-size:.7rem;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.ii{width:42px;height:42px;border-radius:11px;background:rgba(26,107,60,.1);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ir h4{font-size:.68rem;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;}
 .ir p,.ir a{font-size:.9rem;font-weight:500;color:var(--dark);text-decoration:none;}
 .ir a:hover{color:var(--g);}
-.dc{background:var(--g);border-radius:16px;padding:28px;text-align:center;}
-.dc h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;margin-bottom:8px;}
-.dc p{color:rgba(255,255,255,.72);font-size:.84rem;margin-bottom:16px;font-weight:300;}
-.dc .ph{font-size:1.25rem;font-weight:700;color:var(--gold);display:block;margin-bottom:8px;text-decoration:none;}
-.dc small{color:rgba(255,255,255,.55);font-size:.74rem;}
+.dc{background:var(--g);border-radius:16px;padding:30px;text-align:center;}
+.dc h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.28rem;margin-bottom:10px;}
+.dc p{color:rgba(255,255,255,.7);font-size:.84rem;margin-bottom:18px;font-weight:300;}
+.dc .ph{font-size:1.22rem;font-weight:700;color:var(--gold);display:block;margin-bottom:10px;text-decoration:none;}
+.dc small{color:rgba(255,255,255,.52);font-size:.74rem;}
 
-/* MODAL */
-.mo{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+/* ── MODAL ───────────────────────────────────── */
+.mo{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.68);backdrop-filter:blur(7px);align-items:center;justify-content:center;}
 .mo.op{display:flex;}
-.mb{background:#fff;border-radius:26px;padding:48px 40px;max-width:400px;width:90%;text-align:center;animation:mIn .3s ease;}
+.mb{background:#fff;border-radius:26px;padding:52px 44px;max-width:420px;width:90%;text-align:center;animation:mIn .3s ease;}
 @keyframes mIn{from{transform:scale(.88);opacity:0;}to{transform:scale(1);opacity:1;}}
-.mb .mi{font-size:2.8rem;margin-bottom:12px;}
-.mb h2{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:10px;}
-.mb p{color:var(--mid);font-size:.86rem;line-height:1.65;margin-bottom:20px;font-weight:300;}
-.mp{background:var(--g);color:#fff;padding:15px 30px;border-radius:28px;font-size:1.05rem;font-weight:700;display:block;margin-bottom:10px;text-decoration:none;}
+.mb .mi{font-size:3rem;margin-bottom:14px;}
+.mb h2{font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:12px;}
+.mb p{color:var(--mid);font-size:.88rem;line-height:1.68;margin-bottom:22px;font-weight:300;}
+.mp{background:var(--g);color:#fff;padding:16px 32px;border-radius:28px;font-size:1rem;font-weight:700;display:block;margin-bottom:10px;text-decoration:none;transition:background .2s;}
 .mp:hover{background:var(--gl);}
+.mp-wa{background:#25D366;color:#fff;padding:16px 32px;border-radius:28px;font-size:1rem;font-weight:700;display:block;margin-bottom:14px;text-decoration:none;transition:background .2s;}
+.mp-wa:hover{background:#1ebe5c;}
 .mb small{color:var(--mid);font-size:.76rem;}
-.mc{display:block;margin:16px auto 0;background:none;border:1px solid rgba(0,0,0,.13);padding:9px 22px;border-radius:20px;cursor:pointer;color:var(--mid);font-family:'Inter',sans-serif;font-size:.82rem;}
+.mc{display:block;margin:18px auto 0;background:none;border:1px solid rgba(0,0,0,.14);padding:10px 24px;border-radius:20px;cursor:pointer;color:var(--mid);font-family:'Inter',sans-serif;font-size:.82rem;transition:background .2s;}
 .mc:hover{background:var(--cream);}
 
-/* FOOTER */
-footer{background:var(--dark);padding:60px 24px 28px;}
+/* ── FOOTER ──────────────────────────────────── */
+footer{background:var(--dark);padding:64px 24px 30px;}
 .fi{max-width:1240px;margin:0 auto;}
-.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;}
-.fb p{color:rgba(255,255,255,.45);font-size:.83rem;line-height:1.75;margin-top:12px;max-width:280px;font-weight:300;}
-.fc2 h4{color:#fff;font-weight:600;font-size:.84rem;margin-bottom:14px;}
-.fc2 a{display:block;color:rgba(255,255,255,.45);text-decoration:none;font-size:.82rem;margin-bottom:8px;transition:color .2s;cursor:pointer;font-weight:300;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:44px;}
+.fb p{color:rgba(255,255,255,.42);font-size:.84rem;line-height:1.78;margin-top:14px;max-width:280px;font-weight:300;}
+.fc2 h4{color:#fff;font-weight:600;font-size:.84rem;margin-bottom:16px;letter-spacing:.5px;}
+.fc2 a{display:block;color:rgba(255,255,255,.42);text-decoration:none;font-size:.82rem;margin-bottom:9px;transition:color .2s;cursor:pointer;font-weight:300;}
 .fc2 a:hover{color:var(--gold);}
-.sl{display:flex;gap:10px;margin-top:14px;}
-.sl a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:.82rem;transition:all .2s;}
-.sl a:hover{background:var(--g);}
-.fb2{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.fb2 p{color:rgba(255,255,255,.28);font-size:.75rem;font-weight:300;}
+.sl{display:flex;gap:10px;margin-top:16px;}
+.sl a{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:.85rem;transition:background .2s,transform .2s;}
+.sl a:hover{background:var(--g);transform:translateY(-2px);}
+.fb2{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fb2 p{color:rgba(255,255,255,.26);font-size:.75rem;font-weight:300;}
 
-/* ANIM */
-.fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+/* ── FLOATING BUTTONS ────────────────────────── */
+.fab-wrap{position:fixed;bottom:28px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:900;}
+.fab-wa{width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.4rem;box-shadow:0 6px 22px rgba(37,211,102,.42);transition:transform .2s,box-shadow .2s;}
+.fab-wa:hover{transform:scale(1.1);box-shadow:0 10px 28px rgba(37,211,102,.55);}
+.fab-top{width:44px;height:44px;border-radius:50%;background:var(--dark);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 16px rgba(0,0,0,.28);transition:transform .2s,background .2s;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s,background .2s;}
+.fab-top.visible{opacity:1;pointer-events:all;}
+.fab-top:hover{background:var(--g);transform:translateY(-2px);}
+
+/* ── ANIMATIONS ──────────────────────────────── */
+.fade{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease;}
 .fade.in{opacity:1;transform:none;}
 
-/* MOBILE */
+/* ── MOBILE ──────────────────────────────────── */
 @media(max-width:768px){
-  .nl{display:none;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:var(--cream);padding:14px;border-bottom:1px solid rgba(0,0,0,.08);z-index:999;gap:4px;}
+  .nl{display:none;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:var(--cream);padding:16px;border-bottom:1px solid rgba(0,0,0,.09);z-index:999;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.1);}
   .nl.op{display:flex;}
   .hbg{display:flex;}
-  .db{padding:8px 14px;font-size:.76rem;}
+  .db{padding:8px 16px;font-size:.78rem;}
   .ab-in,.ap-in,.cg{grid-template-columns:1fr;}
-  .sg{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .sg{grid-template-columns:repeat(2,1fr);gap:0;}
+  .sg .si{border-right:none;border-bottom:1px solid rgba(255,255,255,.15);padding:20px 16px;}
+  .sg .si:nth-child(odd){border-right:1px solid rgba(255,255,255,.15);}
   .sg3,.steps{grid-template-columns:1fr;}
+  .steps::before{display:none;}
   .amb-grid{grid-template-columns:repeat(2,1fr);}
   .vg{grid-template-columns:repeat(2,1fr);}
   .founders{grid-template-columns:1fr;max-width:340px;}
-  .ft{grid-template-columns:1fr;gap:28px;}
+  .ft{grid-template-columns:1fr;gap:30px;}
   .pl-row{grid-template-columns:1fr;}
   .pl-row.rev{direction:ltr;}
-  .pl-duo{grid-template-columns:1fr;padding:32px;}
-  .slideshow{height:260px;}
+  .pl-duo{grid-template-columns:1fr;padding:34px;}
+  .slideshow{height:280px;}
+  .slide-caption{bottom:16px;left:18px;right:60px;}
+  .slide-caption h4{font-size:.92rem;}
   .badge{left:-8px;bottom:-8px;}
+  .fab-wrap{bottom:20px;right:16px;}
 }
 </style>
 </head>
 <body>
 
+<!-- FLOATING BUTTONS -->
+<div class="fab-wrap">
+  <a class="fab-wa" href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+  <button class="fab-top" id="fabTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+</div>
+
 <!-- NAV -->
 <nav id="nav">
   <div class="ni">
-    <div class="logo" onclick="go('home')">
-      <div class="logo-circle"><img src="assets/logo.png" alt="Logo"/></div>
+    <div class="logo" onclick="go('home')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')go('home')" aria-label="Umeed Foundation — go to home">
+      <div class="logo-circle"><img src="assets/logo.png" alt="Umeed Foundation logo"/></div>
       <span class="logo-text">ümeed <b>Foundation</b></span>
     </div>
-    <div class="nl" id="nl">
-      <a onclick="go('home')" id="n-home" class="on">Home</a>
-      <a onclick="go('about')" id="n-about">About</a>
-      <a onclick="go('hiw')" id="n-hiw">How It Works</a>
-      <a onclick="go('pillars')" id="n-pillars">Pillars</a>
-      <a onclick="go('team')" id="n-team">Team</a>
-      <a onclick="go('contact')" id="n-contact">Contact Us</a>
+    <div class="nl" id="nl" role="navigation" aria-label="Main navigation">
+      <a onclick="go('home')" id="n-home" class="on" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+      <a onclick="go('about')" id="n-about" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About</a>
+      <a onclick="go('hiw')" id="n-hiw" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+      <a onclick="go('pillars')" id="n-pillars" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+      <a onclick="go('team')" id="n-team" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+      <a onclick="go('contact')" id="n-contact" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact Us</a>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <button class="db" onclick="openM()">Donate Now</button>
-      <div class="hbg" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      <button class="db" onclick="openM()" aria-label="Donate Now">Donate Now</button>
+      <button class="hbg" id="hbg" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" aria-controls="nl">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
@@ -292,8 +366,8 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 <!-- ======== HOME ======== -->
 <div class="pg on" id="pg-home">
 
-  <div class="hero">
-    <img class="bg" src="assets/hero.jpg" alt="Inspiring children"/>
+  <div class="hero" role="banner">
+    <img class="bg" src="assets/hero.jpg" alt="Children in Layyah inspired by Umeed Foundation" fetchpriority="high"/>
     <div class="hero-ov"></div>
     <div class="hero-c">
       <div class="hero-pill">🌱 Layyah, Punjab, Pakistan</div>
@@ -301,8 +375,12 @@ footer{background:var(--dark);padding:60px 24px 28px;}
       <p>Empowering lives through charity, education and community support. Bringing hope — Umeed — to every corner of our community.</p>
       <div class="hbtns">
         <button class="btn btn-g" onclick="go('about')">Learn More</button>
-        <button class="btn btn-w" onclick="openM()">Support Us</button>
+        <button class="btn btn-w" onclick="openM()">💚 Support Us</button>
       </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg width="16" height="22" viewBox="0 0 16 22" fill="none"><rect x="1" y="1" width="14" height="20" rx="7" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="7" r="2" fill="currentColor"/></svg>
+      Scroll
     </div>
   </div>
 
@@ -312,27 +390,55 @@ footer{background:var(--dark);padding:60px 24px 28px;}
       <div class="sec-tag">Our Work in Action</div>
       <h2>Making a Difference<br/>Every Single Day</h2>
     </div>
-    <div class="slideshow">
-      <div class="slide active"><img src="assets/slide1.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide2.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide3.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide4.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide5.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide6.jpg" alt=""/><div class="slide-ov"></div></div>
-      <div class="slide"><img src="assets/slide7.jpg" alt=""/><div class="slide-ov"></div></div>
+    <div class="slideshow" role="region" aria-label="Photo slideshow" aria-live="polite">
+      <div class="slide active">
+        <img src="assets/slide1.jpg" alt="Food distribution drive" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Ramadan Food Drive</h4><p>Distributing ration packages to families across Layyah</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide2.jpg" alt="Children receiving support" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Community Outreach</h4><p>Reaching the most vulnerable in our community</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide3.jpg" alt="Education initiative" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Education for All</h4><p>Ensuring every child has access to learning</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide4.jpg" alt="School support" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>School Support Programme</h4><p>Supplying stationery, furniture and essentials</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide5.jpg" alt="Volunteer work" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Volunteer Heroes</h4><p>Our dedicated team on the ground in Layyah</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide6.jpg" alt="Clothing distribution" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Winter Clothing Drive</h4><p>Distributing school uniforms and warm clothing</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/slide7.jpg" alt="Community impact" loading="lazy"/>
+        <div class="slide-ov"></div>
+        <div class="slide-caption"><h4>Growing Communities</h4><p>Building lasting change across Punjab</p></div>
+      </div>
       <div class="ss-arrows">
-        <button class="arr" onclick="prevSlide()">&#8249;</button>
-        <button class="arr" onclick="nextSlide()">&#8250;</button>
+        <button class="arr" onclick="prevSlide()" aria-label="Previous slide">&#8249;</button>
+        <button class="arr" onclick="nextSlide()" aria-label="Next slide">&#8250;</button>
       </div>
     </div>
-    <div class="ss-dots" id="dots">
-      <div class="dot active" onclick="goSlide(0)"></div>
-      <div class="dot" onclick="goSlide(1)"></div>
-      <div class="dot" onclick="goSlide(2)"></div>
-      <div class="dot" onclick="goSlide(3)"></div>
-      <div class="dot" onclick="goSlide(4)"></div>
-      <div class="dot" onclick="goSlide(5)"></div>
-      <div class="dot" onclick="goSlide(6)"></div>
+    <div class="ss-dots" id="dots" role="tablist" aria-label="Slide navigation">
+      <button class="dot active" onclick="goSlide(0)" aria-label="Slide 1" role="tab" aria-selected="true"></button>
+      <button class="dot" onclick="goSlide(1)" aria-label="Slide 2" role="tab" aria-selected="false"></button>
+      <button class="dot" onclick="goSlide(2)" aria-label="Slide 3" role="tab" aria-selected="false"></button>
+      <button class="dot" onclick="goSlide(3)" aria-label="Slide 4" role="tab" aria-selected="false"></button>
+      <button class="dot" onclick="goSlide(4)" aria-label="Slide 5" role="tab" aria-selected="false"></button>
+      <button class="dot" onclick="goSlide(5)" aria-label="Slide 6" role="tab" aria-selected="false"></button>
+      <button class="dot" onclick="goSlide(6)" aria-label="Slide 7" role="tab" aria-selected="false"></button>
     </div>
   </div>
 
@@ -350,7 +456,7 @@ footer{background:var(--dark);padding:60px 24px 28px;}
         <button class="btn btn-g" onclick="go('about')" style="margin-top:10px;">About Us</button>
       </div>
       <div class="aimg fade">
-        <img src="assets/girl.jpg" alt="Umeed Foundation — child with hope"/>
+        <img src="assets/girl.jpg" alt="Child with hope — Umeed Foundation" loading="lazy"/>
         <div class="badge">Est.<br/>2019<small>Layyah, Punjab</small></div>
       </div>
     </div>
@@ -359,10 +465,10 @@ footer{background:var(--dark);padding:60px 24px 28px;}
   <!-- STATS -->
   <div class="stats">
     <div class="sg">
-      <div class="si fade"><h3>1000+</h3><p>Food Packages Distributed</p></div>
-      <div class="si fade"><h3>10+</h3><p>Schools Helped</p></div>
-      <div class="si fade"><h3>500+</h3><p>Students Supported</p></div>
-      <div class="si fade"><h3>6+</h3><p>Years of Impact</p></div>
+      <div class="si fade"><h3 class="counter" data-target="1000" data-suffix="+">0</h3><p>Food Packages Distributed</p></div>
+      <div class="si fade"><h3 class="counter" data-target="10" data-suffix="+">0</h3><p>Schools Helped</p></div>
+      <div class="si fade"><h3 class="counter" data-target="500" data-suffix="+">0</h3><p>Students Supported</p></div>
+      <div class="si fade"><h3 class="counter" data-target="6" data-suffix="+">0</h3><p>Years of Impact</p></div>
     </div>
   </div>
 
@@ -375,9 +481,18 @@ footer{background:var(--dark);padding:60px 24px 28px;}
         <p style="color:var(--mid);max-width:460px;margin:0 auto;font-weight:300;">These moments capture the real heart of our work across Layyah.</p>
       </div>
       <div class="sg3">
-        <div class="sc fade"><img src="assets/act4.jpg" alt="Education"/><div class="scb"><h4>Classrooms Full of Hope</h4><p>Children in Layyah attending school with renewed enthusiasm, supported by Umeed Foundation's education initiatives.</p></div></div>
-        <div class="sc fade"><img src="assets/act1.jpg" alt="Clothes"/><div class="scb"><h4>Warmth for Every Child</h4><p>Our volunteers distribute school uniforms ensuring no child feels left behind or excluded from learning.</p></div></div>
-        <div class="sc fade"><img src="assets/act2.jpg" alt="Food"/><div class="scb"><h4>Fighting Hunger Together</h4><p>Ration packages distributed to dozens of families during times of need and emergency relief drives.</p></div></div>
+        <div class="sc fade">
+          <img src="assets/act4.jpg" alt="Classrooms full of hope" loading="lazy"/>
+          <div class="scb"><h4>Classrooms Full of Hope</h4><p>Children in Layyah attending school with renewed enthusiasm, supported by Umeed Foundation's education initiatives.</p></div>
+        </div>
+        <div class="sc fade">
+          <img src="assets/act1.jpg" alt="Warmth for every child" loading="lazy"/>
+          <div class="scb"><h4>Warmth for Every Child</h4><p>Our volunteers distribute school uniforms ensuring no child feels left behind or excluded from learning.</p></div>
+        </div>
+        <div class="sc fade">
+          <img src="assets/act2.jpg" alt="Fighting hunger together" loading="lazy"/>
+          <div class="scb"><h4>Fighting Hunger Together</h4><p>Ration packages distributed to dozens of families during times of need and emergency relief drives.</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -388,7 +503,10 @@ footer{background:var(--dark);padding:60px 24px 28px;}
       <div class="sec-tag" style="color:var(--gold);">Make a Difference</div>
       <h2>Ready to Bring Hope<br/>to Someone's Life?</h2>
       <p>Your support, however small, creates a ripple of change. Join Umeed Foundation in transforming lives across Layyah.</p>
-      <button class="btn btn-w" onclick="openM()">Donate Now</button>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-w" onclick="openM()">💚 Donate Now</button>
+        <a class="btn btn-w" href="https://wa.me/447523936885" target="_blank" rel="noopener" style="text-decoration:none;">💬 WhatsApp Us</a>
+      </div>
     </div>
   </div>
 
@@ -399,23 +517,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -432,13 +552,13 @@ footer{background:var(--dark);padding:60px 24px 28px;}
   <div class="ap-hero">
     <div class="ap-in">
       <div class="fade">
-        <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">Our Story</span>
+        <span style="color:var(--gold);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:14px;">Our Story</span>
         <h1>About Umeed Foundation</h1>
         <p>Umeed Foundation Layyah is a non-profit organization dedicated to uplifting underprivileged communities in Layyah and surrounding areas of Punjab, Pakistan.</p>
         <p>Founded by 2 childhood best friends, the foundation works tirelessly to provide food, education, healthcare support, and emergency relief to those in need.</p>
         <p>Our mission is to bring hope — 'Umeed' — to every corner of our community. We believe that everyone deserves access to basic necessities, education, and opportunities for a better future.</p>
       </div>
-      <div class="fade"><img src="assets/act1.jpg" alt="Foundation activity"/></div>
+      <div class="fade"><img src="assets/act1.jpg" alt="Umeed Foundation activity" loading="lazy"/></div>
     </div>
   </div>
   <div class="vals"><div class="vals-in">
@@ -464,23 +584,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -495,26 +617,28 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 <!-- ======== HOW IT WORKS ======== -->
 <div class="pg" id="pg-hiw">
   <div class="hiw-hero">
-    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">The Process</span>
+    <span style="color:var(--gold);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:14px;">The Process</span>
     <h1>How It Works</h1>
     <p>From your generous donation to real change on the ground — here's how Umeed Foundation turns support into impact.</p>
   </div>
-  <div class="steps fade">
-    <div class="step"><div class="snum">1</div><h3>You Donate</h3><p>Contact us via phone or social media. Every contribution goes directly to the cause.</p></div>
-    <div class="step"><div class="snum">2</div><h3>We Plan & Procure</h3><p>Our team identifies urgent needs in Layyah then procures food, clothing and supplies.</p></div>
-    <div class="step"><div class="snum">3</div><h3>We Reach Communities</h3><p>Volunteers go directly into schools, neighbourhoods and families to deliver support.</p></div>
-    <div class="step"><div class="snum">4</div><h3>Lives Change</h3><p>Children receive education, families receive food and clothing, communities grow stronger.</p></div>
-    <div class="step"><div class="snum">5</div><h3>We Report Back</h3><p>Regular updates on Instagram so you can see the direct impact of your generosity.</p></div>
-    <div class="step"><div class="snum">6</div><h3>Cycle Continues</h3><p>With continued support, we expand our reach and serve more families across Punjab.</p></div>
+  <div class="steps-wrap">
+    <div class="steps fade">
+      <div class="step"><div class="snum">1</div><h3>You Donate</h3><p>Contact us via phone or social media. Every contribution goes directly to the cause.</p></div>
+      <div class="step"><div class="snum">2</div><h3>We Plan & Procure</h3><p>Our team identifies urgent needs in Layyah then procures food, clothing and supplies.</p></div>
+      <div class="step"><div class="snum">3</div><h3>We Reach Communities</h3><p>Volunteers go directly into schools, neighbourhoods and families to deliver support.</p></div>
+      <div class="step"><div class="snum">4</div><h3>Lives Change</h3><p>Children receive education, families receive food and clothing, communities grow stronger.</p></div>
+      <div class="step"><div class="snum">5</div><h3>We Report Back</h3><p>Regular updates on Instagram so you can see the direct impact of your generosity.</p></div>
+      <div class="step"><div class="snum">6</div><h3>Cycle Continues</h3><p>With continued support, we expand our reach and serve more families across Punjab.</p></div>
+    </div>
   </div>
   <div class="faq"><div class="faq-in">
-    <div class="fade" style="text-align:center;margin-bottom:44px;"><div class="sec-tag">FAQ</div><h2 class="sec-h">Frequently Asked Questions</h2></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Where does my donation go? <span class="ar">▾</span></div><div class="fa">100% goes directly to communities — food, clothing, education and emergency relief in Layyah, Punjab.</div></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">How do you ensure transparency? <span class="ar">▾</span></div><div class="fa">We share regular updates on @umeedfoundationlayyah. Our founders are personally involved in every initiative.</div></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Can I volunteer with Umeed Foundation? <span class="ar">▾</span></div><div class="fa">Absolutely! Contact us via phone or Instagram and our team will connect you with upcoming opportunities.</div></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">What areas do you serve? <span class="ar">▾</span></div><div class="fa">We primarily serve Layyah and surrounding areas of Punjab, Pakistan.</div></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">Can I donate from abroad? <span class="ar">▾</span></div><div class="fa">Yes! Contact us at +44 7523 936885 or via Instagram to arrange your donation from anywhere in the world.</div></div>
-    <div class="fi-item"><div class="fq" onclick="tFaq(this)">How can I partner with Umeed Foundation? <span class="ar">▾</span></div><div class="fa">We welcome CSR partnerships and NGO collaborations. Reach out to discuss how we can work together.</div></div>
+    <div class="fade" style="text-align:center;margin-bottom:48px;"><div class="sec-tag">FAQ</div><h2 class="sec-h">Frequently Asked Questions</h2></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">Where does my donation go? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">100% goes directly to communities — food, clothing, education and emergency relief in Layyah, Punjab.</div></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">How do you ensure transparency? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">We share regular updates on @umeedfoundationlayyah. Our founders are personally involved in every initiative.</div></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">Can I volunteer with Umeed Foundation? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">Absolutely! Contact us via phone or Instagram and our team will connect you with upcoming opportunities.</div></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">What areas do you serve? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">We primarily serve Layyah and surrounding areas of Punjab, Pakistan.</div></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">Can I donate from abroad? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">Yes! Contact us at +44 7523 936885 or via Instagram to arrange your donation from anywhere in the world.</div></div>
+    <div class="fi-item"><button class="fq" onclick="tFaq(this)" aria-expanded="false">How can I partner with Umeed Foundation? <span class="ar" aria-hidden="true">▾</span></button><div class="fa" role="region">We welcome CSR partnerships and NGO collaborations. Reach out to discuss how we can work together.</div></div>
   </div></div>
   <footer>
     <div class="fi">
@@ -523,23 +647,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -554,18 +680,18 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 <!-- ======== PILLARS ======== -->
 <div class="pg" id="pg-pillars">
   <div class="pl-hero">
-    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">Our Work</span>
+    <span style="color:var(--gold);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:14px;">Our Work</span>
     <h1>Six Pillars of Hope</h1>
     <p>Every pillar represents a basic human right. We fight every day to ensure communities of Layyah have access to all six.</p>
   </div>
   <div class="pl-body">
-    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">🍱</span><span class="pn">Pillar 01</span><h2>Food</h2><p>Hunger is a daily reality for too many families in Layyah. We organize regular food distribution drives, providing nutritious ration packages. During Ramadan and emergencies, we scale up to ensure no family goes without a meal.</p></div><img src="assets/act2.jpg" alt="Food"/></div>
-    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏫</span><span class="pn">Pillar 02</span><h2>Education</h2><p>Education is the most powerful tool for breaking the cycle of poverty. We support local schools with stationery, furniture and programmes designed to inspire children to dream big and reach their full potential.</p></div><img src="assets/slide4.jpg" alt="Education"/></div>
-    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">👕</span><span class="pn">Pillar 03</span><h2>Clothes</h2><p>A uniform gives a child confidence and belonging. We distribute school uniforms and winter clothing to children who cannot afford them, restoring dignity and encouraging regular school attendance.</p></div><img src="assets/slide6.jpg" alt="Clothes"/></div>
-    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏥</span><span class="pn">Pillar 04</span><h2>Healthcare</h2><p>With guidance from our co-founder Arham Khan Tangwani, a medical professional, we facilitate healthcare access for underprivileged community members through medical camps and health awareness programmes.</p></div><img src="assets/act1.jpg" alt="Healthcare"/></div>
+    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">🍱</span><span class="pn">Pillar 01</span><h2>Food</h2><p>Hunger is a daily reality for too many families in Layyah. We organize regular food distribution drives, providing nutritious ration packages. During Ramadan and emergencies, we scale up to ensure no family goes without a meal.</p></div><img src="assets/act2.jpg" alt="Food distribution" loading="lazy"/></div>
+    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏫</span><span class="pn">Pillar 02</span><h2>Education</h2><p>Education is the most powerful tool for breaking the cycle of poverty. We support local schools with stationery, furniture and programmes designed to inspire children to dream big and reach their full potential.</p></div><img src="assets/slide4.jpg" alt="Education support" loading="lazy"/></div>
+    <div class="pl-row fade"><div class="pl-txt"><span class="pl-icon">👕</span><span class="pn">Pillar 03</span><h2>Clothes</h2><p>A uniform gives a child confidence and belonging. We distribute school uniforms and winter clothing to children who cannot afford them, restoring dignity and encouraging regular school attendance.</p></div><img src="assets/slide6.jpg" alt="Clothing distribution" loading="lazy"/></div>
+    <div class="pl-row rev fade"><div class="pl-txt"><span class="pl-icon">🏥</span><span class="pn">Pillar 04</span><h2>Healthcare</h2><p>With guidance from our co-founder Arham Khan Tangwani, a medical professional, we facilitate healthcare access for underprivileged community members through medical camps and health awareness programmes.</p></div><img src="assets/act1.jpg" alt="Healthcare support" loading="lazy"/></div>
     <div class="pl-duo fade">
-      <div><span class="pl-icon">🏠</span><span class="pn">Pillar 05</span><h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:10px;">Shelter</h2><p style="color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;">We work to address housing challenges faced by vulnerable families, connecting them with shelter support during emergencies and advocating for safe, dignified living conditions.</p></div>
-      <div><span class="pl-icon">🛡️</span><span class="pn">Pillar 06</span><h2 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:10px;">Safety</h2><p style="color:var(--mid);line-height:1.85;font-size:.93rem;font-weight:300;">Creating safe environments for children and women is central to our mission. We build community awareness, provide crisis support and ensure children can grow up free from harm.</p></div>
+      <div><span class="pl-icon">🏠</span><span class="pn">Pillar 05</span><h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:12px;">Shelter</h2><p style="color:var(--mid);line-height:1.88;font-size:.93rem;font-weight:300;">We work to address housing challenges faced by vulnerable families, connecting them with shelter support during emergencies and advocating for safe, dignified living conditions.</p></div>
+      <div><span class="pl-icon">🛡️</span><span class="pn">Pillar 06</span><h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:12px;">Safety</h2><p style="color:var(--mid);line-height:1.88;font-size:.93rem;font-weight:300;">Creating safe environments for children and women is central to our mission. We build community awareness, provide crisis support and ensure children can grow up free from harm.</p></div>
     </div>
   </div>
   <footer>
@@ -575,23 +701,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -606,20 +734,26 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 <!-- ======== TEAM ======== -->
 <div class="pg" id="pg-team">
   <div class="tm-hero">
-    <span style="color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:12px;">The People Behind the Hope</span>
+    <span style="color:var(--gold);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:14px;">The People Behind the Hope</span>
     <h1>Meet Our Team</h1>
     <p>Two childhood best friends turned the dream of a better Layyah into reality. Meet the founders and ambassadors carrying this mission forward.</p>
   </div>
-  <div style="max-width:1240px;margin:0 auto;padding:60px 24px 0;text-align:center;">
+  <div style="max-width:1240px;margin:0 auto;padding:64px 24px 0;text-align:center;">
     <div class="sec-tag">Founders</div>
     <h2 class="sec-h">The Co-Founders</h2>
     <p style="color:var(--mid);font-weight:300;">Childhood best friends who turned a shared dream into a movement.</p>
   </div>
   <div class="founders">
-    <div class="fc fade"><img src="assets/founder1.jpg" alt="Arham Khan Tangwani"/><div class="fcb"><h3>Arham Khan Tangwani</h3><div class="role">Co-Founder & Medical Advisor</div><p>A dedicated medical professional and visionary co-founder bringing healthcare expertise and commitment to uplifting communities of Layyah.</p><span class="ftag">⭐ Co-Founder</span></div></div>
-    <div class="fc fade"><img src="assets/founder2.jpg" alt="Ali Chaudhry"/><div class="fcb"><h3>Ali Chaudhry</h3><div class="role">Co-Founder & Operations Lead</div><p>A passionate changemaker who drives Umeed Foundation's strategy, community outreach and on-ground operations across Layyah and Punjab.</p><span class="ftag">⭐ Co-Founder</span></div></div>
+    <div class="fc fade">
+      <img src="assets/founder1.jpg" alt="Arham Khan Tangwani" loading="lazy"/>
+      <div class="fcb"><h3>Arham Khan Tangwani</h3><div class="role">Co-Founder & Medical Advisor</div><p>A dedicated medical professional and visionary co-founder bringing healthcare expertise and commitment to uplifting communities of Layyah.</p><span class="ftag">⭐ Co-Founder</span></div>
+    </div>
+    <div class="fc fade">
+      <img src="assets/founder2.jpg" alt="Ali Chaudhry" loading="lazy"/>
+      <div class="fcb"><h3>Ali Chaudhry</h3><div class="role">Co-Founder & Operations Lead</div><p>A passionate changemaker who drives Umeed Foundation's strategy, community outreach and on-ground operations across Layyah and Punjab.</p><span class="ftag">⭐ Co-Founder</span></div>
+    </div>
   </div>
-  <div class="amb" style="margin-top:60px;">
+  <div class="amb" style="margin-top:64px;">
     <div class="amb-in">
       <h2>Campus Ambassadors 2019</h2>
       <p class="amb-sub">Young leaders from Pakistan's top universities representing Umeed Foundation's mission.</p>
@@ -642,23 +776,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -679,22 +815,48 @@ footer{background:var(--dark);padding:60px 24px 28px;}
   <div class="cg">
     <div class="cf fade">
       <h3>Send Us a Message</h3>
-      <div class="fg"><label>Your Name</label><input type="text" placeholder="Enter your full name"/></div>
-      <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
-      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+92 or +44..."/></div>
-      <div class="fg"><label>Message</label><textarea placeholder="Tell us how you'd like to help..."></textarea></div>
-      <button class="sbtn" onclick="alert('Thank you! We will get back to you soon.\nCall us: +44 7523 936885')">Send Message</button>
+      <!--
+        To activate this form:
+        1. Sign up free at https://formspree.io
+        2. Create a new form and copy your form ID
+        3. Replace "YOUR_FORM_ID" in the action URL below
+      -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="fg" id="fg-name">
+          <label for="cf-name">Your Name</label>
+          <input id="cf-name" type="text" name="name" placeholder="Enter your full name" autocomplete="name"/>
+          <div class="err-msg">Please enter your name.</div>
+        </div>
+        <div class="fg" id="fg-email">
+          <label for="cf-email">Email Address</label>
+          <input id="cf-email" type="email" name="email" placeholder="your@email.com" autocomplete="email"/>
+          <div class="err-msg">Please enter a valid email address.</div>
+        </div>
+        <div class="fg">
+          <label for="cf-phone">Phone Number</label>
+          <input id="cf-phone" type="tel" name="phone" placeholder="+92 or +44..." autocomplete="tel"/>
+        </div>
+        <div class="fg" id="fg-msg">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" placeholder="Tell us how you'd like to help..."></textarea>
+          <div class="err-msg">Please enter a message.</div>
+        </div>
+        <button type="submit" class="sbtn" id="submitBtn">Send Message ✉️</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
     </div>
     <div class="ci fade">
       <h3>Contact Information</h3>
       <div class="ic">
         <div class="ir"><div class="ii">📞</div><div><h4>Phone / WhatsApp</h4><a href="tel:+447523936885">+44 7523 936885</a></div></div>
-        <div class="ir"><div class="ii">📸</div><div><h4>Instagram</h4><a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a></div></div>
+        <div class="ir"><div class="ii">💬</div><div><h4>WhatsApp Direct</h4><a href="https://wa.me/447523936885" target="_blank" rel="noopener">Message on WhatsApp</a></div></div>
+        <div class="ir"><div class="ii">📸</div><div><h4>Instagram</h4><a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a></div></div>
         <div class="ir"><div class="ii">📍</div><div><h4>Location</h4><p>Layyah, Punjab, Pakistan</p></div></div>
       </div>
       <div class="dc">
         <h3>💚 Make a Donation</h3>
         <p>To donate, please contact us directly. Your generosity transforms lives in Layyah.</p>
+        <a href="https://wa.me/447523936885" class="ph" target="_blank" rel="noopener">💬 WhatsApp Us</a>
         <a href="tel:+447523936885" class="ph">📞 +44 7523 936885</a>
         <small>Available via Call & WhatsApp<br/>Jazak Allah Khair for your generosity 🙏</small>
       </div>
@@ -707,23 +869,25 @@ footer{background:var(--dark);padding:60px 24px 28px;}
           <span class="logo-text" style="font-size:1.2rem;">ümeed <b style="color:var(--r);">Foundation</b></span>
           <p>Empowering lives through charity, education and community support in Punjab, Pakistan.</p>
           <div class="sl">
-            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">📸</a>
-            <a href="tel:+447523936885">📞</a>
+            <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://wa.me/447523936885" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+            <a href="tel:+447523936885" aria-label="Phone">📞</a>
           </div>
         </div>
         <div class="fc2">
           <h4>Navigate</h4>
-          <a onclick="go('home')">Home</a>
-          <a onclick="go('about')">About Us</a>
-          <a onclick="go('hiw')">How It Works</a>
-          <a onclick="go('pillars')">Pillars</a>
-          <a onclick="go('team')">Team</a>
-          <a onclick="go('contact')">Contact</a>
+          <a onclick="go('home')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('home')">Home</a>
+          <a onclick="go('about')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('about')">About Us</a>
+          <a onclick="go('hiw')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('hiw')">How It Works</a>
+          <a onclick="go('pillars')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('pillars')">Pillars</a>
+          <a onclick="go('team')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('team')">Team</a>
+          <a onclick="go('contact')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')go('contact')">Contact</a>
         </div>
         <div class="fc2">
           <h4>Contact</h4>
           <a href="tel:+447523936885">+44 7523 936885</a>
-          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank">@umeedfoundationlayyah</a>
+          <a href="https://wa.me/447523936885" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/umeedfoundationlayyah" target="_blank" rel="noopener">@umeedfoundationlayyah</a>
           <a>Layyah, Punjab, Pakistan</a>
         </div>
       </div>
@@ -736,11 +900,12 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 </div>
 
 <!-- MODAL -->
-<div class="mo" id="modal" onclick="closeOut(event)">
+<div class="mo" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeOut(event)">
   <div class="mb">
     <div class="mi">💚</div>
-    <h2>Support Umeed Foundation</h2>
+    <h2 id="modalTitle">Support Umeed Foundation</h2>
     <p>To make a donation, please contact us directly. Every contribution brings hope to families in Layyah.</p>
+    <a href="https://wa.me/447523936885" class="mp-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
     <a href="tel:+447523936885" class="mp">📞 +44 7523 936885</a>
     <small>Available via Call & WhatsApp<br/>Jazak Allah Khair for your generosity 🙏</small>
     <button class="mc" onclick="closeM()">Close</button>
@@ -748,44 +913,183 @@ footer{background:var(--dark);padding:60px 24px 28px;}
 </div>
 
 <script>
+/* ── NAVIGATION ─────────────────────────────── */
 function go(name){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.getElementById('pg-'+name).classList.add('on');
   document.querySelectorAll('.nl a').forEach(a=>a.classList.remove('on'));
   const el=document.getElementById('n-'+name);
-  if(el) el.classList.add('on');
+  if(el)el.classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
   document.getElementById('nl').classList.remove('op');
+  document.getElementById('hbg').classList.remove('open');
+  document.getElementById('hbg').setAttribute('aria-expanded','false');
   setTimeout(initFade,120);
 }
-function toggleMenu(){document.getElementById('nl').classList.toggle('op');}
-function openM(){document.getElementById('modal').classList.add('op');}
-function closeM(){document.getElementById('modal').classList.remove('op');}
-function closeOut(e){if(e.target.id==='modal')closeM();}
-function tFaq(el){el.classList.toggle('op');el.nextElementSibling.classList.toggle('op');}
 
-// SLIDESHOW
+function toggleMenu(){
+  const nl=document.getElementById('nl');
+  const btn=document.getElementById('hbg');
+  const open=nl.classList.toggle('op');
+  btn.classList.toggle('open',open);
+  btn.setAttribute('aria-expanded',open);
+}
+
+/* ── MODAL ───────────────────────────────────── */
+let lastFocus=null;
+function openM(){
+  lastFocus=document.activeElement;
+  document.getElementById('modal').classList.add('op');
+  document.querySelector('.mc').focus();
+}
+function closeM(){
+  document.getElementById('modal').classList.remove('op');
+  if(lastFocus)lastFocus.focus();
+}
+function closeOut(e){if(e.target.id==='modal')closeM();}
+
+/* ── FAQ ─────────────────────────────────────── */
+function tFaq(el){
+  const open=el.classList.toggle('op');
+  el.nextElementSibling.classList.toggle('op');
+  el.setAttribute('aria-expanded',open);
+}
+
+/* ── SLIDESHOW ───────────────────────────────── */
 let cur=0;
 const slides=document.querySelectorAll('.slide');
 const dots=document.querySelectorAll('.dot');
-let timer=setInterval(nextSlide,3500);
+let timer=setInterval(nextSlide,4000);
+
 function goSlide(n){
-  slides[cur].classList.remove('active');dots[cur].classList.remove('active');
-  cur=n;slides[cur].classList.add('active');dots[cur].classList.add('active');
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  dots[cur].setAttribute('aria-selected','false');
+  cur=n;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+  dots[cur].setAttribute('aria-selected','true');
 }
 function nextSlide(){goSlide((cur+1)%slides.length);}
-function prevSlide(){goSlide((cur-1+slides.length)%slides.length);clearInterval(timer);timer=setInterval(nextSlide,3500);}
+function prevSlide(){
+  goSlide((cur-1+slides.length)%slides.length);
+  clearInterval(timer);
+  timer=setInterval(nextSlide,4000);
+}
 
-// FADE
+/* ── KEYBOARD: Escape closes modal ──────────── */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(document.getElementById('modal').classList.contains('op'))closeM();
+    if(document.getElementById('nl').classList.contains('op'))toggleMenu();
+  }
+});
+
+/* ── SCROLL-FADE ─────────────────────────────── */
 function initFade(){
   const els=document.querySelectorAll('.pg.on .fade:not(.in)');
   const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
   },{threshold:0.08});
   els.forEach(el=>obs.observe(el));
 }
 document.addEventListener('DOMContentLoaded',initFade);
 initFade();
+
+/* ── ANIMATED STAT COUNTERS ──────────────────── */
+function animateCounter(el){
+  const target=parseInt(el.dataset.target,10);
+  const suffix=el.dataset.suffix||'';
+  const duration=1800;
+  const step=target/duration*16;
+  let current=0;
+  const tick=()=>{
+    current=Math.min(current+step,target);
+    el.textContent=Math.floor(current)+suffix;
+    if(current<target)requestAnimationFrame(tick);
+    else el.textContent=target+suffix;
+  };
+  requestAnimationFrame(tick);
+}
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
+
+/* ── BACK TO TOP BUTTON ──────────────────────── */
+const fabTop=document.getElementById('fabTop');
+window.addEventListener('scroll',()=>{
+  fabTop.classList.toggle('visible',window.scrollY>400);
+},{ passive:true });
+
+/* ── CONTACT FORM ────────────────────────────── */
+const form=document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    let valid=true;
+
+    const name=document.getElementById('cf-name');
+    const email=document.getElementById('cf-email');
+    const msg=document.getElementById('cf-msg');
+
+    [['fg-name',name,v=>v.trim().length>0],
+     ['fg-email',email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+     ['fg-msg',msg,v=>v.trim().length>0]
+    ].forEach(([id,inp,test])=>{
+      const ok=test(inp.value);
+      document.getElementById(id).classList.toggle('has-error',!ok);
+      if(!ok)valid=false;
+    });
+
+    if(!valid)return;
+
+    const btn=document.getElementById('submitBtn');
+    const msgEl=document.getElementById('formMsg');
+    btn.disabled=true;
+    btn.textContent='Sending…';
+    msgEl.className='form-msg';
+
+    // If Formspree ID is still placeholder, show WhatsApp fallback
+    if(form.action.includes('YOUR_FORM_ID')){
+      msgEl.className='form-msg ok';
+      msgEl.textContent='Form not yet connected. Please contact us via WhatsApp: +44 7523 936885';
+      btn.disabled=false;
+      btn.textContent='Send Message ✉️';
+      return;
+    }
+
+    try{
+      const res=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{Accept:'application/json'}
+      });
+      if(res.ok){
+        msgEl.className='form-msg ok';
+        msgEl.textContent='Message sent! We\'ll be in touch soon. Jazak Allah Khair 🙏';
+        form.reset();
+      }else{
+        throw new Error('server error');
+      }
+    }catch{
+      msgEl.className='form-msg err';
+      msgEl.textContent='Something went wrong. Please reach us directly on WhatsApp: +44 7523 936885';
+    }
+    btn.disabled=false;
+    btn.textContent='Send Message ✉️';
+  });
+}
 </script>
 </body>
 </html>
